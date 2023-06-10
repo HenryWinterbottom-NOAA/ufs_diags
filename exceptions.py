@@ -51,6 +51,11 @@ Classes
         This is the base-class for exceptions encountered within the
         interp modules; it is a sub-class of Error.
 
+    TransformsError(msg)
+
+        This is the base-class for exceptions encountered within the
+        transforms modules; it is a sub-class of Error.
+
 Requirements
 ------------
 
@@ -86,6 +91,7 @@ __all__ = [
     "DerivedError",
     "GridsError",
     "InterpError",
+    "TransformsError",
 ]
 
 # ----
@@ -140,5 +146,18 @@ class InterpError(Error):
 
     This is the base-class for exceptions encountered within the
     interp modules; it is a sub-class of Error.
+
+    """
+
+# ----
+
+
+class TransformsError(Error):
+    """
+    Description
+    -----------
+
+    This is the base-class for exceptions encountered within the
+    transforms modules; it is a sub-class of Error.
 
     """

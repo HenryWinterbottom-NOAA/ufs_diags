@@ -46,6 +46,11 @@ Classes
         This is the base-class for exceptions encountered within the
         grids modules; it is a sub-class of Error.
 
+    InterpError(msg)
+
+        This is the base-class for exceptions encountered within the
+        interp modules; it is a sub-class of Error.
+
 Requirements
 ------------
 
@@ -80,6 +85,7 @@ __all__ = [
     "AtmosDerivedError",
     "DerivedError",
     "GridsError",
+    "InterpError",
 ]
 
 # ----
@@ -95,6 +101,7 @@ class AtmosDerivedError(Error):
 
     """
 
+
 # ----
 
 
@@ -108,6 +115,7 @@ class DerivedError(Error):
 
     """
 
+
 # ----
 
 
@@ -118,5 +126,19 @@ class GridsError(Error):
 
     This is the base-class for exceptions encountered within the grids
     modules; it is a sub-class of Error.
+
+    """
+
+
+# ----
+
+
+class InterpError(Error):
+    """
+    Description
+    -----------
+
+    This is the base-class for exceptions encountered within the
+    interp modules; it is a sub-class of Error.
 
     """

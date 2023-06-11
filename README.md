@@ -40,16 +40,15 @@ installation attributes are provided in the table below.
 # Installing Package Dependencies
 
 In order to install the respective Python packages upon which
-`ufs_pyutils` is dependent, do as follow.
+`ufs_anlytools` is dependent, do as follow.
 
 ~~~
-user@host:$ cd ufs_pyutils
+user@host:$ cd ufs_anlytools
 user@host:$ /path/to/pip install update
-user@host:$ /path/to/pip install -r /path/to/ufs_pyutils/requirements.txt
+user@host:$ /path/to/pip install -r /path/to/ufs_anlytools/requirements.txt
 ~~~
 
 For additional information using `pip` and `requirements.txt` type files, see [here](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
-
 
 # Forking
 

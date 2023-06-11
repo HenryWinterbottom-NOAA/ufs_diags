@@ -39,43 +39,26 @@
 # External Packages
 # -----------------
 
-#    astropy; https://github.com/astropy/astropy
+#    geopy; https://github.com/geopy/geopy
 
-#    boto3; https://github.com/boto/boto3
+#    metpy; https://github.com/Unidata/MetPy
 
-#    bs4; https://www.crummy.com/software/BeautifulSoup/
+#    pyspharm; https://github.com/jswhit/pyspharm
 
-#    croniter; https://github.com/kiorky/croniter
+#    ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
-#    jinja2; https://github.com/pallets/jinja
+#    wrf-python; https://github.com/NCAR/wrf-python
 
-#    lxml; https://github.com/lxml/lxml
+# Notes
+# -----
 
-#    netcdf4; https://github.com/Unidata/netcdf4-python
-
-#    numpy; https://github.com/numpy/numpy
-
-#    pytest; https://github.com/pytest-dev/pytest
-
-#    pytest-order; https://github.com/pytest-dev/pytest-order
-
-#    pyyaml; https://github.com/yaml/pyyaml
-
-#    rich_argparse; https://github.com/hamdanal/rich-argparse
-
-#    schema; https://github.com/keleshev/schema
-
-#    tabulate; https://github.com/gregbanks/python-tabulate
-
-#    xarray; https://github.com/pydata/xarray
-
-#    xmltodict; https://github.com/martinblech/xmltodict
+# - see `ufs_pyutils` documentation for installation instructions.
 
 # ----
 
 # Define the Python packages and versions (if applicable) to be
 # installed.
 wrf-python==1.3.4.1
-metpy==1.4.0
+metpy
 pyspharm==1.0.9
 geopy==2.3.0

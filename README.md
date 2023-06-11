@@ -9,7 +9,6 @@
 
 [![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/pycodestyle.yaml)
 [![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/containers.yaml)
-[![Python Virtual Environments](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/venv.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/venv.yaml)
 
 # Cloning
 

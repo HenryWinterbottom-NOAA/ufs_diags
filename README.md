@@ -20,6 +20,37 @@ obtain the entire system, do as follows.
 user@host:$ git clone https://github.com/HenryWinterbottom-NOAA/ufs_anlytools
 ~~~
 
+# Dependencies
+
+The package dependencies and the respective repository and manual
+installation attributes are provided in the table below.
+
+<div align="center">
+
+| Dependency Package | Installation Instructions |
+| :-------------: | :-------------: |
+| [`geopy`](https://github.com/geopy/geopy) | <div align="left">`pip install geopy==2.3.0`</div> |
+| [`metpy`](https://unidata.github.io/MetPy/latest/index.html) | <div align="left">`pip install metpy==1.4.0`</div> |
+| [`pyspharm`](https://github.com/jswhit/pyspharm) | <div align="left">`pip install pyspharm==1.0.9`</div> |
+| [`ufs_pyutils`](https://github.com/HenryWinterbottom-NOAA/ufs_pyutils) | <div align="left">`pip install git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git`</div> | 
+| [`wrf-python`](https://github.com/NCAR/wrf-python) | <div align="left">`pip install wrf-python==1.3.4.1`</div> |
+
+</div>
+
+# Installing Package Dependencies
+
+In order to install the respective Python packages upon which
+`ufs_pyutils` is dependent, do as follow.
+
+~~~
+user@host:$ cd ufs_pyutils
+user@host:$ /path/to/pip install update
+user@host:$ /path/to/pip install -r /path/to/ufs_pyutils/requirements.txt
+~~~
+
+For additional information using `pip` and `requirements.txt` type files, see [here](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
+
+
 # Forking
 
 If a user wishes to contribute modifications done within their

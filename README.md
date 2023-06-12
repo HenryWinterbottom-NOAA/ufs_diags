@@ -26,7 +26,7 @@ installation attributes are provided in the table below.
 
 <div align="center">
 
-| Dependency Package | <div align="left">Installation Instructions</div> |
+| Dependency Package | <div align="left">Installation Instructions</div> | 
 | :-------------: | :-------------: |
 | [`geopy`](https://github.com/geopy/geopy) | <div align="left">`pip install geopy==2.3.0`</div> |
 | [`metpy`](https://unidata.github.io/MetPy/latest/index.html) | <div align="left">`pip install metpy==1.4.0`</div> |

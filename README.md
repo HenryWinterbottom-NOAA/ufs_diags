@@ -15,7 +15,7 @@
 This repository utilizes several sub-modules from various sources. To
 obtain the entire system, do as follows.
 
-~~~
+~~~shell
 user@host:$ git clone https://github.com/HenryWinterbottom-NOAA/ufs_diags
 ~~~
 
@@ -41,13 +41,28 @@ installation attributes are provided in the table below.
 In order to install the respective Python packages upon which
 `ufs_diags` is dependent, do as follow.
 
-~~~
-user@host:$ cd ufs_diags
+~~~shell
+user@host:$ cd /path/to/ufs_diags
 user@host:$ /path/to/pip install update
 user@host:$ /path/to/pip install -r /path/to/ufs_diags/requirements.txt
 ~~~
 
 For additional information using `pip` and `requirements.txt` type files, see [here](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
+
+# Docker Containers
+
+Docker containers containing the `ufs_diags` dependencies can be
+collected as follows.
+
+~~~shell
+user@host:$ /path/to/docker pull ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
+~~~
+
+To execute within the Docker container, do as follows.
+
+~~~shell
+user@host:$ /path/to/docker run -it ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
+~~~
 
 # Forking
 

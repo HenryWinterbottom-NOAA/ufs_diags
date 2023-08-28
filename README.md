@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/License-LGPL_v2.1-black)](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/blob/develop/LICENSE)
+[![License](https://img.shields.io/badge/License-LGPL_v2.1-black)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/blob/develop/LICENSE)
 ![Linux](https://img.shields.io/badge/Linux-ubuntu%7Ccentos-lightgrey)
 ![Python Version](https://img.shields.io/badge/Python-3.5|3.6|3.7-blue)
 
@@ -7,16 +7,16 @@
 [![](https://img.shields.io/badge/pyspharm-orange)](https://github.com/jswhit/pyspharm)
 [![](https://img.shields.io/badge/wrf--python-orange)](https://github.com/NCAR/wrf-python)
 
-[![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/pycodestyle.yaml)
-[![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_anlytools/actions/workflows/containers.yaml)
+[![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml)
+[![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml)
 
 # Cloning
 
 This repository utilizes several sub-modules from various sources. To
 obtain the entire system, do as follows.
 
-~~~
-user@host:$ git clone https://github.com/HenryWinterbottom-NOAA/ufs_anlytools
+~~~shell
+user@host:$ git clone https://github.com/HenryWinterbottom-NOAA/ufs_diags
 ~~~
 
 # Dependencies
@@ -39,15 +39,30 @@ installation attributes are provided in the table below.
 # Installing Package Dependencies
 
 In order to install the respective Python packages upon which
-`ufs_anlytools` is dependent, do as follow.
+`ufs_diags` is dependent, do as follow.
 
-~~~
-user@host:$ cd ufs_anlytools
+~~~shell
+user@host:$ cd /path/to/ufs_diags
 user@host:$ /path/to/pip install update
-user@host:$ /path/to/pip install -r /path/to/ufs_anlytools/requirements.txt
+user@host:$ /path/to/pip install -r /path/to/ufs_diags/requirements.txt
 ~~~
 
 For additional information using `pip` and `requirements.txt` type files, see [here](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
+
+# Docker Containers
+
+Docker containers containing the `ufs_diags` dependencies can be
+collected as follows.
+
+~~~shell
+user@host:$ /path/to/docker pull ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
+~~~
+
+To execute within the Docker container, do as follows.
+
+~~~shell
+user@host:$ /path/to/docker run -it ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
+~~~
 
 # Forking
 

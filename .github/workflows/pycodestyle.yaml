@@ -29,14 +29,14 @@ jobs:
           path: ufs_diags
       - name: Run pycodestyle application.
         run: >
-          cd $GITHUB_WORKSPACE/ufs_anlytools/sorc
+          cd $GITHUB_WORKSPACE/ufs_diags/sorc
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_anlytools/.pycodestyle derived
+          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle derived
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_anlytools/.pycodestyle exceptions.py
+          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle exceptions.py
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_anlytools/.pycodestyle grids
+          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle grids
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_anlytools/.pycodestyle interp
+          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle interp
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_anlytools/.pycodestyle transforms
+          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle transforms

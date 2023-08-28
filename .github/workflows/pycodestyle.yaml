@@ -1,5 +1,5 @@
 ---
-name: Python Coding Standards.
+name: Python Coding Standards
 on:
   pull_request:
     types:

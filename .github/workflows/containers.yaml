@@ -1,5 +1,5 @@
 ---
-name: Docker Images.
+name: Docker Images
 on:
   pull_request:
     types:

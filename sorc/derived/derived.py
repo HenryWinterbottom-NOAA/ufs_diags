@@ -1,20 +1,9 @@
 # =========================================================================
-
-# Module: derived/derived.py
-
+# File: sorc/derived/derived.py
 # Author: Henry R. Winterbottom
-
-# Email: henry.winterbottom@noaa.gov
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the respective public license published by the
-# Free Software Foundation and included with the repository within
-# which this application is contained.
-
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+# Date: 29 August 2023
+# Version: 0.0.1
+# License: LGPL v2.1
 # =========================================================================
 
 """
@@ -26,47 +15,30 @@ Module
 Description
 -----------
 
-    This module contains interfaces to derive various quantities using
-    the respective methodologies.
+    This module contains the base-class object for all derived
+    quantity classes.
 
-Functions
----------
+Classes
+-------
 
-    __get_module__(module, method)
+    Derived()
 
-        This method returns the function corresponding to the
-        specified method (`method`) within the respective specified
-        class (`module`).
+        This is the base-class object for all derived classes.
 
-    compute_height(varobj, method)
+Requirements
+------------
 
-        This function computes a height diagnostic type using the
-        specified method.
-
-    compute_moisture(varobj, method)
-
-        This function computes a moisture type using the specified
-        method.
-
-    compute_pressure(varobj, method)
-
-        This function computes a pressure type using the specified
-        method.
-
-    compute_wind(varobj, method)
-
-        This function computes a wind diagnostic type using the
-        specified method.
+- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
 
-    Henry R. Winterbottom; 10 June 2023
+    Henry R. Winterbottom; 09 March 2023
 
 History
 -------
 
-    2023-06-10: Henry Winterbottom -- Initial implementation.
+    2023-08-29: Henry Winterbottom -- Initial implementation.
 
 """
 
@@ -79,259 +51,76 @@ __email__ = "henry.winterbottom@noaa.gov"
 # ----
 
 from importlib import import_module
-from types import SimpleNamespace
-from typing import Callable
+from typing import Callable, Generic
 
-import numpy
-from exceptions import DerivedError
-from tools import parser_interface
 from utils.logger_interface import Logger
 
 # ----
 
-# Define all available functions.
-__all__ = ["compute_height", "compute_moisture",
-           "compute_pressure", "compute_wind"]
 
-# ----
-
-logger = Logger(caller_name=__name__)
-
-# ----
-
-
-def __get_module__(module: str, method: str) -> Callable:
+class Derived:
     """
     Description
     -----------
 
-    This method returns the function corresponding to the specified
-    method (`method`) within the respective specified class
-    (`module`).
-
-    Parameters
-    ----------
-
-    module: str
-
-        A Python string specifying the name of the module or package
-        from which to collect the respective method.
-
-    method: str
-
-        The method or function within the module or package (`module`)
-        to be returned.
-
-    Returns
-    -------
-
-    compute_method: Callable
-
-        A Python function within the specified module.
+    This is the base-class object for all derived classes.
 
     """
 
-    # Define the method/function within the specified module.
-    try:
-        compute_method = parser_interface.object_getattr(
-            object_in=import_module(module), key=f"{method}", force=True
-        )
-    except Exception as errmsg:
-        msg = (
-            f"Collecting method {method} from module {module} failed with "
-            f"error {errmsg}. Aborting!!!"
-        )
-        raise DerivedError(msg=msg) from errmsg
+    def __init__(self: Generic):
+        """
+        Description
+        -----------
 
-    return compute_method
+        Creates a new Derived object.
 
+        """
 
-# ----
+        # Define the base-class attributes.
+        self.logger = Logger(
+            caller_name=f"{__name__}.{self.__class__.__name__}")
 
+    def get_module(self: Generic, module: str, method: str) -> Callable:
+        """
+        Description
+        -----------
 
-def compute_height(varobj: SimpleNamespace, method: str) -> numpy.array:
-    """
-    Description
-    -----------
+        This method returns the function corresponding to the specified
+        method (`method`) within the respective specified class
+        (`module`).
 
-    This function computes a height diagnostic type using the
-    specified method.
+        Parameters
+        ----------
 
-    Parameters
-    ----------
+        module: str
 
-    varobj: SimpleNamespace
+            A Python string specifying the name of the module or
+            package from which to collect the respective method.
 
-        A Python SimpleNamespace object containing, at minimum, the
-        variables required for the respective height diagnostic
-        computation.
+        method: str
 
-    method: str
+            The method or function within the module or package
+            (`module`) to be returned.
 
-        A Python string specifying the method beneath
-        `derived.atmos.heights`; currently supported methods are the
-        following.
+        Returns
+        -------
 
-        - height_from_pressure
+        compute_method: Callable
 
-    Returns
-    -------
+            A Python function within the specified module.
 
-    height: numpy.array
+        """
 
-        A Python numpy.array variable containing the computed height
-        values.
+        # Define the method/function within the specified module.
+        try:
+            compute_method = parser_interface.object_getattr(
+                object_in=import_module(module), key=f"{method}", force=True
+            )
+        except Exception as errmsg:
+            msg = (
+                f"Collecting method {method} from module {module} failed with "
+                f"error {errmsg}. Aborting!!!"
+            )
+            raise DerivedError(msg=msg) from errmsg
 
-    """
-
-    # Compute the respective height type from the specified method.
-    compute_module = "derived.atmos.heights"
-    compute_method = __get_module__(module=compute_module, method=method)
-    height = compute_method(varobj=varobj)
-
-    return height
-
-
-# ----
-
-
-def compute_moisture(varobj: SimpleNamespace, method: str) -> numpy.array:
-    """
-    Description
-    -----------
-
-    This function computes a height diagnostic type using the
-    specified method.
-
-    Parameters
-    ----------
-
-    varobj: SimpleNamespace
-
-        A Python SimpleNamespace object containing, at minimum, the
-        variables required for the respective moisture type
-        computation.
-
-    method: str
-
-        A Python string specifying the method beneath
-        `derived.atmos.moisture`; currently supported methods are the
-        following.
-
-        - spfh_to_mxrt
-
-    Returns
-    -------
-
-    moisture: numpy.array
-
-        A Python numpy.array variable containing the computed
-        moisture-type values.
-
-    """
-
-    # Compute the respective moisture type from the specified method.
-    compute_module = "derived.atmos.moisture"
-    compute_method = __get_module__(module=compute_module, method=method)
-    moisture = compute_method(varobj=varobj)
-
-    return moisture
-
-
-# ----
-
-
-def compute_pressure(varobj: SimpleNamespace, method: str) -> numpy.array:
-    """
-    Description
-    -----------
-
-    This function computes a pressure type using the specified method.
-
-    Parameters
-    ----------
-
-    varobj: SimpleNamespace
-
-        A Python SimpleNamespace object containing, at minimum, the
-        variables required for the respective pressure computation.
-
-    method: str
-
-        A Python string specifying the method beneath
-        `derived.atmos.pressures`; currently supported methods are the
-        following.
-
-        - pressure_from_thickness
-
-        - pressure_to_sealevel
-
-    Returns
-    -------
-
-    pressure: numpy.array
-
-        A Python numpy.array variable containing the computed pressure
-        values.
-
-    """
-
-    # Compute the respective pressure type from the specified method.
-    compute_module = "derived.atmos.pressures"
-    compute_method = __get_module__(module=compute_module, method=method)
-    pressure = compute_method(varobj=varobj)
-
-    return pressure
-
-
-# ----
-
-
-def compute_wind(varobj: SimpleNamespace, method: str) -> numpy.array:
-    """
-    Description
-    -----------
-
-    This function computes a wind-diagnostic type using the specified
-    method.
-
-    Parameters
-    ----------
-
-    varobj: SimpleNamespace
-
-        A Python SimpleNamespace object containing, at minimum, the
-        variables required for the respective wind-diagnostic
-        computation.
-
-    method: str
-
-        A Python string specifying the method beneath
-        `derived.atmos.winds`; currently supported methods are the
-        following.
-
-        - global_divg
-
-        - global_vort
-
-        - global_wind_part
-
-        - wndmag
-
-    Returns
-    -------
-
-    wind: numpy.array
-
-        A Python array-type variable containing the computed
-        wind-diagnostic values.
-
-    """
-
-    # Compute the respective wind-diagnostic type from the specified
-    # method.
-    compute_module = "derived.atmos.winds"
-    compute_method = __get_module__(module=compute_module, method=method)
-    wind = compute_method(varobj=varobj)
-
-    return wind
+        return compute_method

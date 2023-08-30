@@ -20,15 +20,15 @@ user@host:$ git clone --recursive https://github.com/HenryWinterbottom-NOAA/ufs_
 The package dependencies and the respective repository and manual
 installation attributes are provided in the table below.
 
-<div align="center">
+<div align="left">
 
 | Dependency Package | <div align="left">Installation Instructions</div> | 
 | :-------------: | :-------------: |
-| [`geopy`](https://github.com/geopy/geopy) | <div align="left">`pip install geopy==2.3.0`</div> |
-| [`metpy`](https://unidata.github.io/MetPy/latest/index.html) | <div align="left">`pip install metpy==1.4.0`</div> |
-| [`pyspharm`](https://github.com/jswhit/pyspharm) | <div align="left">`pip install pyspharm==1.0.9`</div> |
-| [`ufs_pyutils`](https://github.com/HenryWinterbottom-NOAA/ufs_pyutils) | <div align="left">`pip install git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git`</div> | 
-| [`wrf-python`](https://github.com/NCAR/wrf-python) | <div align="left">`pip install wrf-python==1.3.4.1`</div> |
+| <div align="left">[`geopy`](https://github.com/geopy/geopy)</div> | <div align="left">`pip install geopy==2.3.0`</div> |
+| <div align="left">[`metpy`](https://unidata.github.io/MetPy/latest/index.html)</div> | <div align="left">`pip install metpy==1.4.0`</div> |
+| <div align="left">[`pyspharm`](https://github.com/jswhit/pyspharm)</div> | <div align="left">`pip install pyspharm==1.0.9`</div> |
+| <div align="left">[`ufs_pyutils`](https://github.com/HenryWinterbottom-NOAA/ufs_pyutils)</div> | <div align="left">`pip install git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git`</div> | 
+| <div align="left">[`wrf-python`](https://github.com/NCAR/wrf-python)</div> | <div align="left">`pip install wrf-python==1.3.4.1`</div> |
 
 </div>
 

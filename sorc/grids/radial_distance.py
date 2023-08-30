@@ -1,23 +1,13 @@
 # =========================================================================
-
-# Module: grids/radial_distance.py
-
+# File: sorc/grids/radial_distance.py
 # Author: Henry R. Winterbottom
-
-# Email: henry.winterbottom@noaa.gov
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the respective public license published by the
-# Free Software Foundation and included with the repository within
-# which this application is contained.
-
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+# Date: 10 June 2023
+# Version: 0.0.1
+# License: LGPL v2.1
 # =========================================================================
 
-"""Module
+"""
+Module
 ------
 
     radial_distance.py
@@ -55,6 +45,10 @@ History
     2023-06-10: Henry Winterbottom -- Initial implementation.
 
 """
+
+# ----
+
+# pylint: disable=no-name-in-module
 
 # ----
 

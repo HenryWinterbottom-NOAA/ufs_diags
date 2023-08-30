@@ -1,20 +1,9 @@
 # =========================================================================
-
-# Module: derived/atmos/atmos.py
-
+# File: sorc/derived/atmos/atmos.py
 # Author: Henry R. Winterbottom
-
-# Email: henry.winterbottom@noaa.gov
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the respective public license published by the
-# Free Software Foundation and included with the repository within
-# which this application is contained.
-
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+# Date: 29 August 2023
+# Version: 0.0.1
+# License: LGPL v2.1
 # =========================================================================
 
 """
@@ -57,14 +46,10 @@ __email__ = "henry.winterbottom@noaa.gov"
 
 # ----
 
-from derived import Derived
-
-
 from types import SimpleNamespace
 
 import numpy
-
-from exceptions import DerivedError
+from derived.derived import Derived
 
 # ----
 
@@ -91,8 +76,9 @@ class Atmos(Derived):
         # Define the base-class attributes.
         super().__init__()
 
-    def compute_height(self: Derived, varobj: SimpleNamespace,
-                       method: str) -> numpy.array:
+    def compute_height(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------
@@ -135,8 +121,9 @@ class Atmos(Derived):
 
         return height
 
-    def compute_moisture(self: Derived, varobj: SimpleNamespace,
-                         method: str) -> numpy.array:
+    def compute_moisture(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------
@@ -179,8 +166,9 @@ class Atmos(Derived):
 
         return moisture
 
-    def compute_pressure(self: Derived, varobj: SimpleNamespace,
-                         method: str) -> numpy.array:
+    def compute_pressure(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------
@@ -225,8 +213,9 @@ class Atmos(Derived):
 
         return pressure
 
-    def compute_wind(self: Derived, varobj: SimpleNamespace,
-                     method: str) -> numpy.array:
+    def compute_wind(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------

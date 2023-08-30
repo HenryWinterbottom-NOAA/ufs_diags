@@ -1,12 +1,7 @@
 [![License](https://img.shields.io/badge/License-LGPL_v2.1-black)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/blob/develop/LICENSE)
 ![Linux](https://img.shields.io/badge/Linux-ubuntu%7Ccentos-lightgrey)
 ![Python Version](https://img.shields.io/badge/Python-3.5|3.6|3.7-blue)
-
-[![Dependencies](https://img.shields.io/badge/Dependencies-geopy-orange)](https://github.com/geopy/geopy)
-[![](https://img.shields.io/badge/metpy-orange)](https://unidata.github.io/MetPy/latest/index.html)
-[![](https://img.shields.io/badge/pyspharm-orange)](https://github.com/jswhit/pyspharm)
-[![](https://img.shields.io/badge/ufs__pyutils-orange)](https://github.com/HenryWinterbottom-NOAA/ufs_pyutils)
-[![](https://img.shields.io/badge/wrf--python-orange)](https://github.com/NCAR/wrf-python)
+[![Code style: black](https://img.shields.io/badge/Code%20Style-black-purple.svg)](https://github.com/psf/black)
 
 [![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml)
 [![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml)

@@ -1,20 +1,9 @@
 # =========================================================================
-
-# Module: grids/haversine.py
-
+# File: sorc/grids/haversine.py
 # Author: Henry R. Winterbottom
-
-# Email: henry.winterbottom@noaa.gov
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the respective public license published by the
-# Free Software Foundation and included with the repository within
-# which this application is contained.
-
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+# Date: 10 June 2023
+# Version: 0.0.1
+# License: LGPL v2.1
 # =========================================================================
 
 """
@@ -54,6 +43,10 @@ History
     2023-06-10: Henry Winterbottom -- Initial implementation.
 
 """
+
+# ----
+
+# pylint: disable=no-name-in-module
 
 # ----
 
@@ -124,8 +117,7 @@ def haversine(loc1: Tuple, loc2: Tuple, radius: float = R_earth.value) -> float:
     # Compute the great-circle distance (e.g., haversine).
     dlat = lat2 - lat1
     dlon = lon2 - lon1
-    dist = sin(dlat / 2.0) ** 2.0 + cos(lat1) * \
-        cos(lat2) * sin(dlon / 2.0) ** 2.0
+    dist = sin(dlat / 2.0) ** 2.0 + cos(lat1) * cos(lat2) * sin(dlon / 2.0) ** 2.0
     hvsine = 2.0 * radius * asin(sqrt(dist))
 
     return hvsine

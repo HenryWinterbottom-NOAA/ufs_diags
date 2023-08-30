@@ -114,8 +114,7 @@ from utils.logger_interface import Logger
 # ----
 
 # Define all available functions.
-__all__ = ["global_divg", "global_psichi",
-           "global_vort", "global_wind_part", "wndmag"]
+__all__ = ["global_divg", "global_psichi", "global_vort", "global_wind_part", "wndmag"]
 
 # ----
 
@@ -374,8 +373,7 @@ def global_divg(varobj: SimpleNamespace) -> numpy.array:
         # accordingly.
         (_, dataspec) = xspharm.getvrtdivspec(ugrid=xuwnd, vgrid=xvwnd)
         divg[lev, :, :] = xspharm.spectogrd(dataspec=dataspec)
-        divg[lev, :, :] = __reset_nan__(
-            vararr=divg[lev, :, :], ref_vararr=uwnd)
+        divg[lev, :, :] = __reset_nan__(vararr=divg[lev, :, :], ref_vararr=uwnd)
 
     # Deallocate memory for the spherical harmonic transform object.
     __cleanup__(xspharm=xspharm)
@@ -439,8 +437,7 @@ def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.array]:
 
         # Compute the streamfunction and velocity potential and reset
         # the output values accordingly.
-        (psi[lev, :, :], chi[lev, :, :]) = xspharm.getpsichi(
-            ugrid=xuwnd, vgrid=xvwnd)
+        (psi[lev, :, :], chi[lev, :, :]) = xspharm.getpsichi(ugrid=xuwnd, vgrid=xvwnd)
         chi[lev, :, :] = __reset_nan__(vararr=chi[lev, :, :], ref_vararr=uwnd)
         psi[lev, :, :] = __reset_nan__(vararr=psi[lev, :, :], ref_vararr=uwnd)
 
@@ -499,8 +496,7 @@ def global_vort(varobj: SimpleNamespace) -> numpy.array:
         # accordingly.
         (dataspec, _) = xspharm.getvrtdivspec(ugrid=xuwnd, vgrid=xvwnd)
         vort[lev, :, :] = xspharm.spectogrd(dataspec=dataspec)
-        vort[lev, :, :] = __reset_nan__(
-            vararr=vort[lev, :, :], ref_vararr=uwnd)
+        vort[lev, :, :] = __reset_nan__(vararr=vort[lev, :, :], ref_vararr=uwnd)
 
     # Deallocate memory for the spherical harmonic transform object.
     __cleanup__(xspharm=xspharm)
@@ -582,28 +578,20 @@ def global_wind_part(
 
         # Compute the divergent component of the total wind field.
         (zspec, dspec) = [numpy.zeros(zspec_save.shape), dspec_save]
-        (udiv[lev, :, :], vdiv[lev, :, :]) = xspharm.getuv(
-            vrtspec=zspec, divspec=dspec)
-        udiv[lev, :, :] = __reset_nan__(
-            vararr=udiv[lev, :, :], ref_vararr=uwnd)
-        vdiv[lev, :, :] = __reset_nan__(
-            vararr=vdiv[lev, :, :], ref_vararr=vwnd)
+        (udiv[lev, :, :], vdiv[lev, :, :]) = xspharm.getuv(vrtspec=zspec, divspec=dspec)
+        udiv[lev, :, :] = __reset_nan__(vararr=udiv[lev, :, :], ref_vararr=uwnd)
+        vdiv[lev, :, :] = __reset_nan__(vararr=vdiv[lev, :, :], ref_vararr=vwnd)
 
         # Compute the rotational component of the total wind field.
         (zspec, dspec) = [zspec_save, numpy.zeros(dspec_save.shape)]
-        (uvor[lev, :, :], vvor[lev, :, :]) = xspharm.getuv(
-            vrtspec=zspec, divspec=dspec)
-        uvor[lev, :, :] = __reset_nan__(
-            vararr=uvor[lev, :, :], ref_vararr=uwnd)
-        vvor[lev, :, :] = __reset_nan__(
-            vararr=vvor[lev, :, :], ref_vararr=vwnd)
+        (uvor[lev, :, :], vvor[lev, :, :]) = xspharm.getuv(vrtspec=zspec, divspec=dspec)
+        uvor[lev, :, :] = __reset_nan__(vararr=uvor[lev, :, :], ref_vararr=uwnd)
+        vvor[lev, :, :] = __reset_nan__(vararr=vvor[lev, :, :], ref_vararr=vwnd)
 
         # Compute the residual (i.e., harmonic) component of the total
         # wind field.
-        uhrm[lev, :, :] = numpy.array(
-            xuwnd[:, :]) - (uvor[lev, :, :] + udiv[lev, :, :])
-        vhrm[lev, :, :] = numpy.array(
-            xvwnd[:, :]) - (vvor[lev, :, :] + vdiv[lev, :, :])
+        uhrm[lev, :, :] = numpy.array(xuwnd[:, :]) - (uvor[lev, :, :] + udiv[lev, :, :])
+        vhrm[lev, :, :] = numpy.array(xvwnd[:, :]) - (vvor[lev, :, :] + vdiv[lev, :, :])
 
     # Deallocate memory for the spherical harmonic transform object.
     __cleanup__(xspharm=xspharm)

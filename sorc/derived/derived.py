@@ -44,6 +44,10 @@ History
 
 # ----
 
+# pylint: disable=too-few-public-methods
+
+# ----
+
 __author__ = "Henry R. Winterbottom"
 __maintainer__ = "Henry R. Winterbottom"
 __email__ = "henry.winterbottom@noaa.gov"
@@ -53,6 +57,8 @@ __email__ = "henry.winterbottom@noaa.gov"
 from importlib import import_module
 from typing import Callable, Generic
 
+from exceptions import DerivedError
+from tools import parser_interface
 from utils.logger_interface import Logger
 
 # ----
@@ -77,8 +83,7 @@ class Derived:
         """
 
         # Define the base-class attributes.
-        self.logger = Logger(
-            caller_name=f"{__name__}.{self.__class__.__name__}")
+        self.logger = Logger(caller_name=f"{__name__}.{self.__class__.__name__}")
 
     def get_module(self: Generic, module: str, method: str) -> Callable:
         """

@@ -46,13 +46,10 @@ __email__ = "henry.winterbottom@noaa.gov"
 
 # ----
 
-from derived.derived import Derived
-
 from types import SimpleNamespace
 
 import numpy
-
-from exceptions import DerivedError
+from derived.derived import Derived
 
 # ----
 
@@ -79,8 +76,9 @@ class Atmos(Derived):
         # Define the base-class attributes.
         super().__init__()
 
-    def compute_height(self: Derived, varobj: SimpleNamespace,
-                       method: str) -> numpy.array:
+    def compute_height(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------
@@ -123,8 +121,9 @@ class Atmos(Derived):
 
         return height
 
-    def compute_moisture(self: Derived, varobj: SimpleNamespace,
-                         method: str) -> numpy.array:
+    def compute_moisture(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------
@@ -167,8 +166,9 @@ class Atmos(Derived):
 
         return moisture
 
-    def compute_pressure(self: Derived, varobj: SimpleNamespace,
-                         method: str) -> numpy.array:
+    def compute_pressure(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------
@@ -213,8 +213,9 @@ class Atmos(Derived):
 
         return pressure
 
-    def compute_wind(self: Derived, varobj: SimpleNamespace,
-                     method: str) -> numpy.array:
+    def compute_wind(
+        self: Derived, varobj: SimpleNamespace, method: str
+    ) -> numpy.array:
         """
         Description
         -----------

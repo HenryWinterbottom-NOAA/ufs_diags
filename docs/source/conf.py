@@ -46,14 +46,14 @@ extensions = [
     "readthedocs_ext.readthedocs",
 ]
 
-autoapi_dirs = ["../../sorc/derived",
-                "../../sorc/grids",
-                "../../sorc/interp",
-                "../../sorc/transforms",
+autoapi_dirs = ["../../sorc/derived/atmos/",
+                "../../sorc/grids/",
+                "../../sorc/interp/",
+                "../../sorc/transforms/",
                 ]
 
-autoapi_type="python"
-autoapi_ignore=["*test_*_interface*.py*", "*tests*"]
+autoapi_type = "python"
+autoapi_ignore = []
 
 # bibtex_bibfiles = ['references.bib']
 

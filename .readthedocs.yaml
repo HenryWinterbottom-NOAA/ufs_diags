@@ -4,8 +4,8 @@ build:
   os: ubuntu-20.04
   tools:
     python: "3.9"
-  install:
-    - apt-get update && apt-get install -y
+install:
+  - apt-get update && apt-get install -y
 sphinx:
   configuration: docs/source/conf.py
 python:

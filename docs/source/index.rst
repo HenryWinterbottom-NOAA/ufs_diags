@@ -6,7 +6,7 @@ UFS Diagnostics Toolbox
 Description
 ^^^^^^^^^^^
 
-A Python toolbox of diagnostic computations for UFS-based applications.
+Python-base diagnostic tools for UFS-based applications.
 
 - **Derived Quantities**: Atmosphere and ocean analysis derived quantities.
 - **Grid Diagnostics**: Tools to compute grid-related attributes.

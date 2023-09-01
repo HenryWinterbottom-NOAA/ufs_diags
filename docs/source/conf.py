@@ -14,6 +14,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
 
 # -- Project information -----------------------------------------------------
 
@@ -31,7 +32,7 @@ author = '2023 Henry R. Winterbottom'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 
-extensions = [
+extensions=[
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
@@ -40,19 +41,19 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     "numpydoc",
-    "autoapi.extension",
+    #    "autoapi.extension",
     "sphinx_autodoc_typehints",
     "readthedocs_ext.readthedocs",
 ]
 
-autoapi_dirs = ["../../sorc/derived",
-                "../../sorc/grids",
-                "../../sorc/interp",
-                "../../sorc/transforms",
-                ]
+# autoapi_dirs = ["../../sorc/derived",
+#                "../../sorc/grids",
+#                "../../sorc/interp",
+#                "../../sorc/transforms",
+#                ]
 
-autoapi_type = "python"
-autoapi_ignore = ["*test_*_interface*.py*", "*tests*"]
+autoapi_type="python"
+autoapi_ignore=["*test_*_interface*.py*", "*tests*"]
 
 # bibtex_bibfiles = ['references.bib']
 
@@ -112,7 +113,7 @@ def setup(app):
 # default: ``['localtoc.html', 'relations.html', 'sourcelink.html',
 # 'searchbox.html']``.
 #
-# html_sidebars = {}
+html_sidebars = {}
 
 
 # -- Options for HTMLHelp output ---------------------------------------------

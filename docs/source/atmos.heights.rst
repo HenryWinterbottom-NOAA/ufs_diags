@@ -1,6 +1,6 @@
 Atmospheric Heights
 ===================
 
-.. currentmodule:: atmos.heights
+.. currentmodule:: derived.atmos.heights
 
 .. autofunction:: height_from_pressure

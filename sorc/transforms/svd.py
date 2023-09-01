@@ -21,8 +21,8 @@ Description
 Functions
 ---------
 
-    desconstruct(varin, compute_uv=True, full_matrices=True,
-                 overwrite_at=True, check_finite=True, lapack_driver="gesdd")
+    deconstruct(varin, compute_uv=True, full_matrices=True,
+                overwrite_at=True, check_finite=True, lapack_driver="gesdd")
 
         This function factorizes (e.g., deconstructs) the
         2-dimensional input variable `varin` using Singular Value

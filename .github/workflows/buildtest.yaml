@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Run the ufs_diags build-tests.
     steps:
+      - name: Install FORTRAN compiler.
+        run: |
+          $(which sudo) apt-get -yq update
+
+          $(which sudo) apt-get -yq install gfortran
       - name: Build and install Python dependencies.
         run: >
           $(which wget) --no-check-certificate

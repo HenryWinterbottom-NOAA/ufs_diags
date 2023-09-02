@@ -2,6 +2,7 @@
 ![Linux](https://img.shields.io/badge/Linux-ubuntu%7Ccentos-lightgrey)
 ![Python Version](https://img.shields.io/badge/Python-3.5|3.6|3.7-blue)
 [![Code style: black](https://img.shields.io/badge/Code%20Style-black-purple.svg)](https://github.com/psf/black)
+[![Documentation Status](https://readthedocs.org/projects/ufs-diags/badge/?version=latest)](https://ufs-diags.readthedocs.io/en/latest/?badge=latest)
 
 [![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml)
 [![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml)

@@ -12,9 +12,11 @@
 #
 import os
 import sys
+import pip
 
-# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
+pip.main(["install", "ufs_pyutils"])
 
 # -- Project information -----------------------------------------------------
 

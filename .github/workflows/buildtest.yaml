@@ -1,0 +1,35 @@
+---
+name: Build Tests
+on:
+  pull_request:
+    types:
+      - opened
+  release:
+    types:
+      - published
+  schedule:
+    - cron: 0 0 * * *
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Run the ufs_diags build-tests.
+    steps:
+      - name: Build and install Python dependencies.
+        run: >
+          $(which wget) --no-check-certificate
+          https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
+
+          $(which sh) Miniconda3-py39_4.10.3-Linux-x86_64.sh -b -p miniconda
+
+          $(which python) -m pip install --upgrade pip
+      - name: Checkout ufs_diags.
+        uses: actions/checkout@v2
+        with:
+          path: ufs_diags
+      - name: Build ufs_diags.
+        run: >
+          cd ${GITHUB_WORKSPACE}/ufs_diags/
+
+          $(which python) ${GITHUB_WORKSPACE}/ufs_diags/setup.py build
+
+          $(which python)  ${GITHUB_WORKSPACE}/ufs_diags/setup.py install --user

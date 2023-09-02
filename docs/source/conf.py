@@ -12,7 +12,7 @@
 #
 import os
 import sys
-import utils
+from ufs_pyutils import utils
 
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))

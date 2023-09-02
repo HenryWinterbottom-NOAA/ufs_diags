@@ -45,8 +45,3 @@ executed as follows.
 .. toctree::
    :hidden:
    :maxdepth: 2
-
-   derived
-   grids
-   interp
-   transforms

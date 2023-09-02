@@ -1,3 +1,4 @@
+ufs-pyutils
 sphinx==6.2.1
 furo==2023.03.27
 sphinx-autoapi

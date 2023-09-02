@@ -41,16 +41,16 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     "numpydoc",
-    #    "autoapi.extension",
+    "autoapi.extension",
     "sphinx_autodoc_typehints",
     "readthedocs_ext.readthedocs",
 ]
 
-# autoapi_dirs = ["../../sorc/derived/atmos",
-#                "../../sorc/grids",
-#                "../../sorc/interp",
-#                "../../sorc/transforms",
-#                ]
+autoapi_dirs = ["../../sorc/derived",
+                "../../sorc/grids",
+                "../../sorc/interp",
+                "../../sorc/transforms",
+                ]
 
 autoapi_type = "python"
 autoapi_ignore = []

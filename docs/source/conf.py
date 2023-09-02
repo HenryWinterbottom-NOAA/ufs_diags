@@ -16,7 +16,6 @@ import pip
 
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
-pip.main(["install", "ufs_pyutils"])
 
 # -- Project information -----------------------------------------------------
 
@@ -43,16 +42,16 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     "numpydoc",
-    "autoapi.extension",
+    #    "autoapi.extension",
     "sphinx_autodoc_typehints",
     "readthedocs_ext.readthedocs",
 ]
 
-autoapi_dirs = ["../../sorc/derived/atmos",
-                "../../sorc/grids",
-                "../../sorc/interp",
-                "../../sorc/transforms",
-                ]
+# autoapi_dirs = ["../../sorc/derived/atmos",
+#                "../../sorc/grids",
+#                "../../sorc/interp",
+#                "../../sorc/transforms",
+#                ]
 
 autoapi_type = "python"
 autoapi_ignore = []

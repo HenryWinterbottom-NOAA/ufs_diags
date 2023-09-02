@@ -5,7 +5,7 @@ build:
   tools:
     python: "3.9"
   apt_packages:
-    - gfortran 
+    - gfortran
 sphinx:
   configuration: docs/source/conf.py
 python:

@@ -4,6 +4,7 @@
 [![Code style: black](https://img.shields.io/badge/Code%20Style-black-purple.svg)](https://github.com/psf/black)
 [![Documentation Status](https://readthedocs.org/projects/ufs-diags/badge/?version=latest)](https://ufs-diags.readthedocs.io/en/latest/?badge=latest)
 
+[![Build Tests](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/buildtest.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/buildtest.yaml)
 [![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml)
 [![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml)
 

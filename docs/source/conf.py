@@ -14,14 +14,14 @@ import os
 import subprocess
 import sys
 
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
 
 # -- Project information -----------------------------------------------------
 
-project = 'UFS Diagnostics'
-copyright = '2023 Henry R. Winterbottom'
-author = '2023 Henry R. Winterbottom'
+project = "UFS Diagnostics"
+copyright = "2023 Henry R. Winterbottom"
+author = "2023 Henry R. Winterbottom"
 
 # The full version, including alpha/beta/rc tags
 # release = None
@@ -34,24 +34,25 @@ author = '2023 Henry R. Winterbottom'
 # ones.
 
 extensions = [
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
+    "sphinx.ext.coverage",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.ifconfig",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.githubpages",
     "numpydoc",
     #    "autoapi.extension",
     "sphinx_autodoc_typehints",
     "readthedocs_ext.readthedocs",
 ]
 
-autoapi_dirs = ["../../sorc/derived",
-                "../../sorc/grids",
-                "../../sorc/interp",
-                "../../sorc/transforms",
-                ]
+autoapi_dirs = [
+    "../../sorc/derived",
+    "../../sorc/grids",
+    "../../sorc/interp",
+    "../../sorc/transforms",
+]
 
 autoapi_type = "python"
 autoapi_ignore = []
@@ -65,10 +66,10 @@ autoapi_ignore = []
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ".rst"
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -76,7 +77,7 @@ master_doc = 'index'
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -85,7 +86,9 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 #
 html_theme = "furo"  # 'sphinx_rtd_theme'
-html_theme_path = ["_themes", ]
+html_theme_path = [
+    "_themes",
+]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -102,8 +105,8 @@ html_context = {}
 
 
 def setup(app):
-    app.add_css_file('custom.css')  # may also be an URL
-    app.add_css_file('theme_overrides.css')  # may also be an URL
+    app.add_css_file("custom.css")  # may also be an URL
+    app.add_css_file("theme_overrides.css")  # may also be an URL
 
 
 # Custom sidebar templates, must be a dictionary that maps document names
@@ -120,8 +123,14 @@ html_sidebars = {}
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ufs_diags'
+htmlhelp_basename = "ufs_diags"
 
 subprocess.run(
-    ["git", "clone", "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils"])
+    [
+        "git",
+        "clone",
+        "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils",
+        "./ufs_pyutils",
+    ]
+)
 sys.path.append("./ufs_pyutils")

@@ -123,5 +123,5 @@ html_sidebars = {}
 htmlhelp_basename = 'ufs_diags'
 
 subprocess.run(
-    "git", "clone", "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils")
+    ["git", "clone", "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils"])
 sys.path.append("./ufs_pyutils")

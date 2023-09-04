@@ -1,7 +1,7 @@
 # =========================================================================
-# File: sorc/derived/atmos/moisture.py
+# File: diags/derived/atmos/moisture.py
 # Author: Henry R. Winterbottom
-# Date: 29 August 2023
+# Date: 09 March 2023
 # Version: 0.0.1
 # License: LGPL v2.1
 # =========================================================================

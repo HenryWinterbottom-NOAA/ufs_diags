@@ -1,7 +1,7 @@
 # =========================================================================
-# File: sorc/derived/atmos/winds.py
+# File: diags/derived/atmos/winds.py
 # Author: Henry R. Winterbottom
-# Date: 29 August 2023
+# Date: 09 March 2023
 # Version: 0.0.1
 # License: LGPL v2.1
 # =========================================================================
@@ -114,7 +114,8 @@ from utils.logger_interface import Logger
 # ----
 
 # Define all available functions.
-__all__ = ["global_divg", "global_psichi", "global_vort", "global_wind_part", "wndmag"]
+__all__ = ["global_divg", "global_psichi",
+           "global_vort", "global_wind_part", "wndmag"]
 
 # ----
 

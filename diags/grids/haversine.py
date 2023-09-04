@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/grids/haversine.py
+# File: diags/grids/haversine.py
 # Author: Henry R. Winterbottom
 # Date: 10 June 2023
 # Version: 0.0.1

@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/grids/radial_distance.py
+# File: diags/grids/radial_distance.py
 # Author: Henry R. Winterbottom
 # Date: 10 June 2023
 # Version: 0.0.1

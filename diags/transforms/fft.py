@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/transforms/fft.py
+# File: diags/transforms/fft.py
 # Author: Henry R. Winterbottom
 # Date: 16 March 2023
 # Version: 0.0.1
@@ -34,7 +34,7 @@ Functions
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -57,7 +57,7 @@ __email__ = "henry.winterbottom@noaa.gov"
 # ----
 
 import numpy
-from exceptions import TransformsError
+from diags.exceptions import TransformsError
 from utils.logger_interface import Logger
 
 # ----

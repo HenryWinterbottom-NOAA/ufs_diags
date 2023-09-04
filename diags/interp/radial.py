@@ -1,20 +1,9 @@
 # =========================================================================
-
-# Module: interp/radial.py
-
+# File: diags/interp/radial.py
 # Author: Henry R. Winterbottom
-
-# Email: henry.winterbottom@noaa.gov
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the respective public license published by the
-# Free Software Foundation and included with the repository within
-# which this application is contained.
-
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+# Date: 28 April 2023
+# Version: 0.0.1
+# License: LGPL v2.1
 # =========================================================================
 
 """
@@ -41,7 +30,7 @@ Functions
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -72,7 +61,7 @@ __email__ = "henry.winterbottom@noaa.gov"
 from types import SimpleNamespace
 
 import numpy
-from exceptions import InterpError
+from diags.exceptions import InterpError
 from scipy.interpolate import griddata
 from utils.logger_interface import Logger
 
@@ -153,7 +142,8 @@ def interp(interp_obj: SimpleNamespace, method: str = "linear") -> numpy.array:
 
             # Interpolate across the specified radial interval.
             varin = interp_var
-            varin = numpy.where((interp_obj.raddist <= inner_dist), numpy.nan, varin)
+            varin = numpy.where(
+                (interp_obj.raddist <= inner_dist), numpy.nan, varin)
             mask = numpy.ma.masked_invalid(varin)
             xf = xxgrid[~mask.mask]
             yf = yygrid[~mask.mask]

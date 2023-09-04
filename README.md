@@ -5,7 +5,6 @@
 [![Documentation Status](https://readthedocs.org/projects/ufs-diags/badge/?version=latest)](https://ufs-diags.readthedocs.io/en/latest/?badge=latest)
 
 [![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml)
-[![Container Builds](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/containers.yaml)
 
 # Cloning
 
@@ -28,6 +27,7 @@ installation attributes are provided in the table below.
 | <div align="left">[`geopy`](https://github.com/geopy/geopy)</div> | <div align="left">`pip install geopy==2.3.0`</div> |
 | <div align="left">[`metpy`](https://unidata.github.io/MetPy/latest/index.html)</div> | <div align="left">`pip install metpy==1.4.0`</div> |
 | <div align="left">[`pyspharm`](https://github.com/jswhit/pyspharm)</div> | <div align="left">`pip install pyspharm==1.0.9`</div> |
+
 | <div align="left">[`ufs_pyutils`](https://github.com/HenryWinterbottom-NOAA/ufs_pyutils)</div> | <div align="left">`pip install git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git`</div> | 
 | <div align="left">[`wrf-python`](https://github.com/NCAR/wrf-python)</div> | <div align="left">`pip install wrf-python==1.3.4.1`</div> |
 
@@ -36,7 +36,7 @@ installation attributes are provided in the table below.
 # Installing Package Dependencies
 
 In order to install the respective Python packages upon which
-`ufs_diags` is dependent, do as follow.
+`ufs_diags` is dependent, do as follows.
 
 ~~~shell
 user@host:$ cd /path/to/ufs_diags

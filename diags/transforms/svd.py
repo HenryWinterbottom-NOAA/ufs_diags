@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/transforms/svd.py
+# File: diags/transforms/svd.py
 # Author: Henry R. Winterbottom
 # Date: 09 June 2023
 # Version: 0.0.1
@@ -39,7 +39,7 @@ Functions
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -69,7 +69,7 @@ __email__ = "henry.winterbottom@noaa.gov"
 from typing import Tuple
 
 import numpy
-from exceptions import TransformsError
+from diags.exceptions import TransformsError
 from scipy.linalg import svd
 from utils.logger_interface import Logger
 

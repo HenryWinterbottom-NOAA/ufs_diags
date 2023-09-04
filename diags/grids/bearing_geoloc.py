@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/grids/bearing_geoloc.py
+# File: diags/grids/bearing_geoloc.py
 # Author: Henry R. Winterbottom
 # Date: 10 June 2023
 # Version: 0.0.1
@@ -32,7 +32,7 @@ Requirements
 
 - astropy; https://github.com/astropy/astropy
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------

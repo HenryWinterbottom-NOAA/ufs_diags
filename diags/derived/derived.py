@@ -1,7 +1,7 @@
 # =========================================================================
-# File: sorc/derived/derived.py
+# File: diags/derived/derived.py
 # Author: Henry R. Winterbottom
-# Date: 29 August 2023
+# Date: 09 March 2023
 # Version: 0.0.1
 # License: LGPL v2.1
 # =========================================================================
@@ -28,7 +28,7 @@ Classes
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------

@@ -1,7 +1,7 @@
 # =========================================================================
-# File: sorc/derived/atmos/winds.py
+# File: diags/derived/atmos/winds.py
 # Author: Henry R. Winterbottom
-# Date: 29 August 2023
+# Date: 09 March 2023
 # Version: 0.0.1
 # License: LGPL v2.1
 # =========================================================================
@@ -74,7 +74,7 @@ Requirements
 
 - pyspharm; https://github.com/jswhit/pyspharm
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -107,14 +107,15 @@ from typing import Tuple
 
 import numpy
 import spharm
-from exceptions import AtmosDerivedError
+from diags.exceptions import AtmosDerivedError
 from tools import parser_interface
 from utils.logger_interface import Logger
 
 # ----
 
 # Define all available functions.
-__all__ = ["global_divg", "global_psichi", "global_vort", "global_wind_part", "wndmag"]
+__all__ = ["global_divg", "global_psichi",
+           "global_vort", "global_wind_part", "wndmag"]
 
 # ----
 

@@ -1,20 +1,9 @@
 # =========================================================================
-
-# Module: interp/vertical.py
-
+# File: diags/interp/vertical.py
 # Author: Henry R. Winterbottom
-
-# Email: henry.winterbottom@noaa.gov
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the respective public license published by the
-# Free Software Foundation and included with the repository within
-# which this application is contained.
-
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+# Date: 07 March 2023
+# Version: 0.0.1
+# License: LGPL v2.1
 # =========================================================================
 
 """
@@ -40,7 +29,7 @@ Functions
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 - wrf-python; https://github.com/NCAR/wrf-python
 
@@ -73,7 +62,7 @@ __email__ = "henry.winterbottom@noaa.gov"
 from typing import List
 
 import numpy
-from exceptions import InterpError
+from diags.exceptions import InterpError
 from utils.logger_interface import Logger
 from wrf import interplevel
 

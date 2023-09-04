@@ -1,7 +1,7 @@
 # =========================================================================
-# File: sorc/exceptions.py
+# File: diags/exceptions.py
 # Author: Henry R. Winterbottom
-# Date: 29 August 2023
+# Date: 10 June 2023
 # Version: 0.0.1
 # License: LGPL v2.1
 # =========================================================================

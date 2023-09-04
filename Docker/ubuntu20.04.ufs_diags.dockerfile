@@ -19,7 +19,7 @@
 
 # ----
 
-FROM noaaufsrnr/ubuntu20.04.ufs_pyutils:latest
+FROM ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_pyutils:latest
 ENV UFS_DIAGS_GIT_URL="https://www.github.com/HenryWinterbottom-NOAA/ufs_diags.git"
 ENV UFS_DIAGS_GIT_BRANCH="develop"
 
@@ -31,7 +31,7 @@ RUN $(which apt-get) update -y && \
     $(which rm) -r -f /var/lib/apt/lists/*
 ENV PATH="/miniconda/bin:${PATH}"
 
-RUN $(which git) clone --recursive ${UFS_DIAGS_GIT_URL} --branch ${UFS_DIAGS_GIT_BRANCH} /home/ufs_diags && \
-    cd /home/ufs_diags && \
-    $(which pip) install -r /home/ufs_diags/requirements.txt
-ENV PYTHONPATH="/home/ufs_diags/sorc:${PYTHONPATH}"
+RUN $(which git) clone --recursive ${UFS_DIAGS_GIT_URL} --branch ${UFS_DIAGS_GIT_BRANCH} /opt/ufs_diags && \
+    cd /opt/ufs_diags && \
+    $(which pip) install -r /opt/ufs_diags/requirements.txt
+ENV PYTHONPATH="/opt/ufs_diags:${PYTHONPATH}"

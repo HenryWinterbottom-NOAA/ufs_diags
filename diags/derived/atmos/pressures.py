@@ -58,7 +58,7 @@ Requirements
 
 - metpy; https://unidata.github.io/MetPy/latest/index.html
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------

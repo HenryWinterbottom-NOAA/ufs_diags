@@ -74,7 +74,7 @@ Requirements
 
 - pyspharm; https://github.com/jswhit/pyspharm
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -107,7 +107,7 @@ from typing import Tuple
 
 import numpy
 import spharm
-from exceptions import AtmosDerivedError
+from diags.exceptions import AtmosDerivedError
 from tools import parser_interface
 from utils.logger_interface import Logger
 

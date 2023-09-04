@@ -41,7 +41,7 @@ Functions
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -72,7 +72,7 @@ __email__ = "henry.winterbottom@noaa.gov"
 from types import SimpleNamespace
 
 import numpy
-from exceptions import InterpError
+from diags.exceptions import InterpError
 from scipy.interpolate import griddata
 from utils.logger_interface import Logger
 

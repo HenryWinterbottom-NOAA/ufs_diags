@@ -48,10 +48,10 @@ extensions = [
 ]
 
 autoapi_dirs = [
-    "../../sorc/derived",
-    "../../sorc/grids",
-    "../../sorc/interp",
-    "../../sorc/transforms",
+    "../../diags/derived",
+    "../../diags/grids",
+    "../../diags/interp",
+    "../../diags/transforms",
 ]
 
 autoapi_type = "python"

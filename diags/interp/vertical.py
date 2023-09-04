@@ -40,7 +40,7 @@ Functions
 Requirements
 ------------
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 - wrf-python; https://github.com/NCAR/wrf-python
 
@@ -73,7 +73,7 @@ __email__ = "henry.winterbottom@noaa.gov"
 from typing import List
 
 import numpy
-from exceptions import InterpError
+from diags.exceptions import InterpError
 from utils.logger_interface import Logger
 from wrf import interplevel
 

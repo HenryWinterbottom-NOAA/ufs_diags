@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/derived/atmos/heights.py
+# File: sorc/derived/atmos/moisture.py
 # Author: Henry R. Winterbottom
 # Date: 29 August 2023
 # Version: 0.0.1
@@ -10,27 +10,28 @@
 Module
 ------
 
-    heights.py
+    moisture.py
 
 Description
 -----------
 
-    This module contains various height profile computational methods.
+    This module contains various moisture variable computation
+    methods.
 
 Functions
 ---------
 
-    height_from_pressure(pressure)
+    spfh_to_mxrt(inputs_obj)
 
-        This function computes the geometric height profile from the
-        pressure profile array.
+        This function computes the mixing ratio from the specific
+        humidity.
 
 Requirements
 ------------
 
 - metpy; https://unidata.github.io/MetPy/latest/index.html
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -55,14 +56,13 @@ __email__ = "henry.winterbottom@noaa.gov"
 from types import SimpleNamespace
 
 import numpy
-from metpy.calc import pressure_to_height_std
-from metpy.units import units
+from metpy.calc import mixing_ratio_from_specific_humidity as mxrt_from_spfh
 from utils.logger_interface import Logger
 
 # ----
 
 # Define all available functions.
-__all__ = ["height_from_pressure"]
+__all__ = ["spfh_to_mxrt"]
 
 # ----
 
@@ -71,13 +71,13 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def height_from_pressure(varobj: SimpleNamespace) -> numpy.array:
+def spfh_to_mxrt(varobj: SimpleNamespace) -> numpy.array:
     """
     Description
     -----------
 
-    This function computes the geometric height profile from the
-    pressure profile array.
+    This function computes the mixing ratio from the specific
+    humidity.
 
     Parameters
     ----------
@@ -85,26 +85,26 @@ def height_from_pressure(varobj: SimpleNamespace) -> numpy.array:
     varobj: SimpleNamespace
 
         A Python SimpleNamespace object containing, at minimum, the
-        pressure levels from which the height profile will be
-        computed.
+        specific humidity profile (`specific_humidity`) from which the
+        mixing ratio will be computed.
 
     Returns
     -------
 
-    height: numpy.array
+    mxrt: numpy.array
 
-        A Python numpy.array variable containing the geometric height
+        A Python numpy.array variable containing the mixing-ratio
         profile.
 
     """
 
-    # Compute the geometric height profile using the pressure profile.
+    # Compute the mixing ratio profile from the specific humidity
+    # profile.
     msg = (
-        "Computing the geometric height profile array of dimension "
-        f"{varobj.pressure.values.shape}."
+        "Computing the mixing ratio array of dimension "
+        f"{varobj.specific_humidity.values.shape}."
     )
     logger.info(msg=msg)
-    pressure = units.Quantity(varobj.pressure.values, "Pa")
-    height = pressure_to_height_std(pressure=pressure)
+    mxrt = mxrt_from_spfh(specific_humidity=varobj.specific_humidity.values)
 
-    return height
+    return mxrt

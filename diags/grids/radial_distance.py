@@ -32,7 +32,7 @@ Requirements
 
 - astropy; https://github.com/astropy/astropy
 
-- ufs_pytils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
 
 Author(s)
 ---------
@@ -62,10 +62,9 @@ from typing import Tuple
 
 import numpy
 from astropy.constants import R_earth
-from exceptions import GridsError
+from diags.exceptions import GridsError
+from diags.grids.haversine import haversine
 from utils.logger_interface import Logger
-
-from grids.haversine import haversine
 
 # ----
 

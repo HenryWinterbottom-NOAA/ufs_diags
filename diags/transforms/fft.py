@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/transforms/fft.py
+# File: diags/transforms/fft.py
 # Author: Henry R. Winterbottom
 # Date: 16 March 2023
 # Version: 0.0.1

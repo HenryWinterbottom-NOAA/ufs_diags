@@ -1,5 +1,5 @@
 # =========================================================================
-# File: sorc/transforms/svd.py
+# File: diags/transforms/svd.py
 # Author: Henry R. Winterbottom
 # Date: 09 June 2023
 # Version: 0.0.1

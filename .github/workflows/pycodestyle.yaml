@@ -16,27 +16,27 @@ jobs:
     steps:
       - name: Build and install Python dependencies.
         run: >
-          $(which wget) --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
+          $(command -v wget) --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
 
-          $(which sh) Miniconda3-py39_4.10.3-Linux-x86_64.sh -b -p miniconda
+          $(command -v sh) Miniconda3-py39_4.10.3-Linux-x86_64.sh -b -p miniconda
 
-          $(which python) -m pip install --upgrade pip
+          $(command -v python) -m pip install --upgrade pip
 
-          $(which pip) install pycodestyle
+          $(command -v pip) install pycodestyle
       - name: Checkout ufs_diags.
         uses: actions/checkout@v2
         with:
           path: ufs_diags
       - name: Run pycodestyle application.
         run: >
-          cd $GITHUB_WORKSPACE/ufs_diags/diags
+          cd $GITHUB_WORKSPACE/ufs_diags/sorc/diags
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle derived
+          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle derived
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle exceptions.py
+          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle exceptions.py
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle grids
+          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle grids
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle interp
+          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle interp
 
-          $(which pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle transforms
+          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle transforms

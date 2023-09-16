@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/grids/bearing_geoloc.py
-# Author: Henry R. Winterbottom
-# Date: 10 June 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -52,18 +44,17 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from math import asin, atan2, cos, sin
 from typing import Tuple
 
 import numpy
 from astropy.constants import R_earth
 from utils.logger_interface import Logger
+
+# ----
+
+# Define all available module properties.
+__all__ = ["bearing_geoloc"]
 
 # ----
 

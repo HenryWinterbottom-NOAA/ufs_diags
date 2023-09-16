@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/interp/radial.py
-# Author: Henry R. Winterbottom
-# Date: 28 April 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -52,18 +44,17 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from types import SimpleNamespace
 
 import numpy
 from diags.exceptions import InterpError
 from scipy.interpolate import griddata
 from utils.logger_interface import Logger
+
+# ----
+
+# Define all available module properties.
+__all__ = ["interp"]
 
 # ----
 
@@ -142,8 +133,7 @@ def interp(interp_obj: SimpleNamespace, method: str = "linear") -> numpy.array:
 
             # Interpolate across the specified radial interval.
             varin = interp_var
-            varin = numpy.where(
-                (interp_obj.raddist <= inner_dist), numpy.nan, varin)
+            varin = numpy.where((interp_obj.raddist <= inner_dist), numpy.nan, varin)
             mask = numpy.ma.masked_invalid(varin)
             xf = xxgrid[~mask.mask]
             yf = yygrid[~mask.mask]

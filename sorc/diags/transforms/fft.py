@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/transforms/fft.py
-# Author: Henry R. Winterbottom
-# Date: 16 March 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -50,19 +42,13 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 import numpy
 from diags.exceptions import TransformsError
 from utils.logger_interface import Logger
 
 # ----
 
-# Define all available functions.
+# Define all available module properties.
 __all__ = ["forward_fft2d", "inverse_fft2d"]
 
 # ----
@@ -72,7 +58,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def forward_fft2d(varin: numpy.array) -> numpy.complex_:
+def forward_fft2d(varin: numpy.array) -> numpy.complex:
     """
     Description
     -----------
@@ -91,9 +77,9 @@ def forward_fft2d(varin: numpy.array) -> numpy.complex_:
     Returns
     -------
 
-    varout: numpy.complex_
+    varout: numpy.complex
 
-        A Python numpy.complex_ variable containing the 2-dimensional
+        A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the forward FFT.
 
     Raises
@@ -126,7 +112,7 @@ def forward_fft2d(varin: numpy.array) -> numpy.complex_:
 # ----
 
 
-def inverse_fft2d(varin: numpy.complex_) -> numpy.complex_:
+def inverse_fft2d(varin: numpy.complex) -> numpy.complex:
     """
     Description
     -----------
@@ -137,17 +123,17 @@ def inverse_fft2d(varin: numpy.complex_) -> numpy.complex_:
     Parameters
     ----------
 
-    varin: numpy.complex_
+    varin: numpy.complex
 
-        A Python numpy.complex_ variable containing the 2-dimensional
+        A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the FFT.
 
     Returns
     -------
 
-    varout: numpy.complex_
+    varout: numpy.complex
 
-        A Python numpy.complex_ variable containing the 2-dimensional
+        A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the inverse FFT.
 
     Raises

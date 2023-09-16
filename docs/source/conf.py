@@ -16,6 +16,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
+sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc/diags"))
 
 # -- Project information -----------------------------------------------------
 
@@ -48,10 +49,10 @@ extensions = [
 ]
 
 autoapi_dirs = [
-    "../../diags/derived",
-    "../../diags/grids",
-    "../../diags/interp",
-    "../../diags/transforms",
+    "../../sorc/diags/derived",
+    "../../sorc/diags/grids",
+    "../../sorc/diags/interp",
+    "../../sorc/diags/transforms",
 ]
 
 autoapi_type = "python"

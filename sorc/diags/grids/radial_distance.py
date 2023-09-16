@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/grids/radial_distance.py
-# Author: Henry R. Winterbottom
-# Date: 10 June 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -50,14 +42,6 @@ History
 
 # pylint: disable=no-name-in-module
 
-# ----
-
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from typing import Tuple
 
 import numpy
@@ -65,6 +49,11 @@ from astropy.constants import R_earth
 from diags.exceptions import GridsError
 from diags.grids.haversine import haversine
 from utils.logger_interface import Logger
+
+# ----
+
+# Define all available module properties.
+__all__ = ["radial_distance"]
 
 # ----
 

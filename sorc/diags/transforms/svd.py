@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/transforms/svd.py
-# Author: Henry R. Winterbottom
-# Date: 09 June 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -60,18 +52,17 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from typing import Tuple
 
 import numpy
 from diags.exceptions import TransformsError
 from scipy.linalg import svd
 from utils.logger_interface import Logger
+
+# ----
+
+# Define all available module properties.
+__all__ = ["deconstruct", "reconstruct"]
 
 # ----
 

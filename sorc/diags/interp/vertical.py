@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/interp/vertical.py
-# Author: Henry R. Winterbottom
-# Date: 07 March 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -53,12 +45,6 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from typing import List
 
 import numpy
@@ -68,7 +54,7 @@ from wrf import interplevel
 
 # ----
 
-# Define all available functions.
+# Define all available module properties.
 __all__ = ["interp"]
 
 # ----

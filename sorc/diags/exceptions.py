@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/exceptions.py
-# Author: Henry R. Winterbottom
-# Date: 10 June 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -64,17 +56,11 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from utils.error_interface import Error
 
 # ----
 
-# Define all available attributes.
+# Define all available module properties.
 __all__ = [
     "AtmosDerivedError",
     "DerivedError",

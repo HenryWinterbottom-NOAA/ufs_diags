@@ -15,6 +15,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.abspath("."))
+sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc/diags"))
 
 # -- Project information -----------------------------------------------------

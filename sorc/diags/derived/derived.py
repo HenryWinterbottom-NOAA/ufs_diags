@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/derived/derived.py
-# Author: Henry R. Winterbottom
-# Date: 09 March 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -45,12 +37,6 @@ History
 # ----
 
 # pylint: disable=too-few-public-methods
-
-# ----
-
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
 
 # ----
 

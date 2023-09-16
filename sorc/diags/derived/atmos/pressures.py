@@ -1,11 +1,3 @@
-# =========================================================================
-# File: diags/derived/atmos/pressures.py
-# Author: Henry R. Winterbottom
-# Date: 09 March 2023
-# Version: 0.0.1
-# License: LGPL v2.1
-# =========================================================================
-
 """
 Module
 ------
@@ -55,12 +47,6 @@ History
 
 # ----
 
-__author__ = "Henry R. Winterbottom"
-__maintainer__ = "Henry R. Winterbottom"
-__email__ = "henry.winterbottom@noaa.gov"
-
-# ----
-
 from types import SimpleNamespace
 
 import numpy
@@ -69,7 +55,7 @@ from utils.logger_interface import Logger
 
 # ----
 
-# Define all available functions.
+# Define all available module properties.
 __all__ = ["pressure_from_thickness", "pressure_to_sealevel"]
 
 # ----

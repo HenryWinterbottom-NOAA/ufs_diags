@@ -129,7 +129,7 @@ def pressure_to_sealevel(varobj: SimpleNamespace) -> numpy.array:
     varobj: SimpleNamespace
 
         A Python SimpleNamespace object containing, at minimum, the
-        surface prssure, the surface elevation, and the temperature
+        surface pressure, the surface elevation, and the temperature
         profile from which the sea-level pressure will be computed.
 
     Returns
@@ -137,8 +137,8 @@ def pressure_to_sealevel(varobj: SimpleNamespace) -> numpy.array:
 
     pslp: numpy.array
 
-        A Python numpy.array variable updated to contain the surface
-        pressure reduced to sea-level.
+        A Python numpy.array variable containing the surface pressure
+        reduced to sea-level.
 
     """
 

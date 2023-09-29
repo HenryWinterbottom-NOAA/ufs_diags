@@ -45,7 +45,7 @@ History
 import os
 from importlib import import_module
 from types import SimpleNamespace
-from typing import Callable, Generic
+from typing import Callable, Generic, List
 
 from confs.yaml_interface import YAML
 from diags.exceptions import DerivedError
@@ -76,8 +76,23 @@ class Derived:
         """
 
         # Define the base-class attributes.
-        self.logger = Logger(caller_name=f"{__name__}.{self.__class__.__name__}")
+        self.logger = Logger(
+            caller_name=f"{__name__}.{self.__class__.__name__}")
         self.constants_obj = self.get_constants()
+
+    def chunk(self: Generic, ncoords: int) -> List:
+        """ """
+
+        dchunk = int(ncoords/os.cpu_count())
+        chunk_list = []
+        chunk_size = 0
+        for idx in range(os.cpu_count()):
+            chunk_size = min(idx*dchunk, ncoords)
+            chunk_list.append(chunk_size)
+        chunk_list.append(ncoords)
+        chunk_list = sorted(list(set(chunk_list)))
+
+        return chunk_list
 
     @privatemethod
     def get_constants(self: Generic) -> SimpleNamespace:
@@ -185,3 +200,17 @@ class Derived:
             raise DerivedError(msg=msg) from errmsg
 
         return compute_method
+
+# ----
+
+
+def chunk_list(ncoords, *args, **kwargs):
+    chunks_list = Derived().chunk(ncoords=ncoords)
+
+    def function(func):
+        def wrapper(*func_args, **func_kwargs):
+
+            result = func(*func_args, *args, **kwargs)
+            return result
+        return wrapper
+    return function

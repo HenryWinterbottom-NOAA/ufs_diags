@@ -3,4 +3,4 @@ metpy
 pyspharm==1.0.9
 geopy==2.3.0
 gsw
-git+https://www.github.com/HenryWinterbottom-NOAA/ufs-pyutils.git
+ufs-pyutils

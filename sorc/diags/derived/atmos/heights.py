@@ -40,7 +40,6 @@ History
 
 from types import SimpleNamespace
 
-import numpy
 from metpy.calc import pressure_to_height_std
 from metpy.units import units
 from utils.logger_interface import Logger
@@ -57,7 +56,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def height_from_pressure(varobj: SimpleNamespace) -> numpy.array:
+def height_from_pressure(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -77,18 +76,15 @@ def height_from_pressure(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    height: numpy.array
+    height: units.Quantity
 
-        A Python numpy.array variable containing the geometric height
-        profile.
+        A Python units.Quantity variable containing the geometric
+        height profile.
 
     """
 
     # Compute the geometric height profile using the pressure profile.
-    msg = (
-        "Computing the geometric height profile array of dimension "
-        f"{varobj.pressure.values.shape}."
-    )
+    msg = "Computing the geometric height array."
     logger.info(msg=msg)
     pressure = units.Quantity(varobj.pressure.values, "Pa")
     height = pressure_to_height_std(pressure=pressure)

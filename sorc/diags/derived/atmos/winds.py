@@ -347,9 +347,7 @@ def global_divg(varobj: SimpleNamespace) -> numpy.array:
     # Compute the divergence field; proceed accordingly.
     msg = f"Computing global divergence array of dimension {divg.shape}."
     logger.info(msg=msg)
-
     for lev in range(nlevs):
-
         # Define the wind vector components.
         (uwnd, vwnd) = __get_lev_uv__(varobj=varobj, lev=lev)
         xuwnd = __reset_nan2zero__(vararr=uwnd)
@@ -413,9 +411,7 @@ def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.array]:
         f"of dimension {chi.shape}."
     )
     logger.info(msg=msg)
-
     for lev in range(nlevs):
-
         # Define the wind vector components.
         (uwnd, vwnd) = __get_lev_uv__(varobj=varobj, lev=lev)
         xuwnd = __reset_nan2zero__(vararr=uwnd)
@@ -472,7 +468,6 @@ def global_vort(varobj: SimpleNamespace) -> numpy.array:
 
     # Compute the vorticity field; proceed accordingly.
     for lev in range(nlevs):
-
         # Define the wind vector components.
         (uwnd, vwnd) = __get_lev_uv__(varobj=varobj, lev=lev)
         xuwnd = __reset_nan2zero__(vararr=uwnd)
@@ -555,7 +550,6 @@ def global_wind_part(
 
     # Compute the total wind components; proceed accordingly.
     for lev in range(nlevs):
-
         # Define the wind vector components.
         (uwnd, vwnd) = __get_lev_uv__(varobj=varobj, lev=lev)
         xuwnd = __reset_nan2zero__(vararr=uwnd)

@@ -8,3 +8,7 @@ Derived Quantities
    atmos.moisture
    atmos.pressures
    atmos.winds
+   ocean.depths
+   ocean.pressures
+   ocean.salinity
+   ocean.temperatures

@@ -45,7 +45,7 @@ extensions = [
     "numpydoc",
     #    "autoapi.extension",
     "sphinx_autodoc_typehints",
-    "readthedocs_ext.readthedocs",
+    # "readthedocs_ext.readthedocs",
 ]
 
 autoapi_dirs = [
@@ -126,12 +126,12 @@ html_sidebars = {}
 # Output file base name for HTML help builder.
 htmlhelp_basename = "ufs_diags"
 
-subprocess.run(
-    [
-        "git",
-        "clone",
-        "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils",
-        "./ufs_pyutils",
-    ]
-)
-sys.path.append("./ufs_pyutils")
+# subprocess.run(
+#    [
+#        "git",
+#        "clone",
+#        "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils",
+#        "./ufs_pyutils",
+#    ]
+# )
+# sys.path.append("./ufs_pyutils")

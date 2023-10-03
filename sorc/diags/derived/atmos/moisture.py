@@ -41,8 +41,8 @@ History
 
 from types import SimpleNamespace
 
-import numpy
 from metpy.calc import mixing_ratio_from_specific_humidity as mxrt_from_spfh
+from metpy.units import units
 from utils.logger_interface import Logger
 
 # ----
@@ -57,7 +57,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def spfh_to_mxrt(varobj: SimpleNamespace) -> numpy.array:
+def spfh_to_mxrt(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -77,9 +77,9 @@ def spfh_to_mxrt(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    mxrt: numpy.array
+    mxrt: units.Quantity
 
-        A Python numpy.array variable containing the mixing-ratio
+        A Python units.Quantity variable containing the mixing-ratio
         profile.
 
     """

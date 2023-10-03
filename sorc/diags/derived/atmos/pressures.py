@@ -51,6 +51,7 @@ from types import SimpleNamespace
 
 import numpy
 from metpy.calc import altimeter_to_sea_level_pressure as a2slp
+from metpy.units import units
 from utils.logger_interface import Logger
 
 # ----
@@ -65,7 +66,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def pressure_from_thickness(varobj: SimpleNamespace) -> numpy.array:
+def pressure_from_thickness(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -87,10 +88,10 @@ def pressure_from_thickness(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    pres: numpy.array
+    pres: units.Quantity
 
-        A Python numpy.array variable containing the pressure profile;
-        units are Pascals.
+        A Python units.Quantity variable containing the pressure
+        profile; units are Pascals.
 
     """
 
@@ -101,12 +102,9 @@ def pressure_from_thickness(varobj: SimpleNamespace) -> numpy.array:
 
     # Compute the pressure profile using the surface pressure and
     # layer thickness; proceed accordingly.
-    msg = f"Computing pressure profile array of dimension {pres.shape}."
+    msg = "Computing the pressure profile array."
     logger.info(msg=msg)
-
     for zlev in range(pres.shape[0] - 2, 0, -1):
-
-        # Compute the pressure profile.
         pres[zlev, :, :] = pres[zlev + 1, :, :] + dpres[zlev, :, :]
 
     return pres
@@ -115,7 +113,7 @@ def pressure_from_thickness(varobj: SimpleNamespace) -> numpy.array:
 # ----
 
 
-def pressure_to_sealevel(varobj: SimpleNamespace) -> numpy.array:
+def pressure_to_sealevel(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -135,14 +133,16 @@ def pressure_to_sealevel(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    pslp: numpy.array
+    pslp: units.Quantity
 
-        A Python numpy.array variable containing the surface pressure
-        reduced to sea-level.
+        A Python units.Quantity variable containing the surface
+        pressure reduced to sea-level.
 
     """
 
     # Reduce the surface pressure value to the sea-surface.
+    msg = "Computing the pressure reduced to sea-level."
+    logger.info(msg=msg)
     pslp = a2slp(
         altimeter_value=varobj.surface_pressure.values[:, :],
         height=varobj.surface_height.values[:, :],

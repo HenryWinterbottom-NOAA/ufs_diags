@@ -13,7 +13,7 @@ Description
 Functions
 ---------
 
-    pressure_from_depth(varobj)
+    seawater_from_depth(varobj)
 
         This function computes the absolute sea-water pressure profile
         as a function of depth and latitude; the following are the
@@ -98,7 +98,7 @@ def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     sw_pres: units.Quantity
 
         A Python units.Quantity variable containing the 3-dimensional
-       absolute sea-water pressure array.
+        absolute sea-water pressure array.
 
     """
 

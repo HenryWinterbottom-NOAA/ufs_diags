@@ -42,7 +42,6 @@ Functions
 
         - seawater_pressure; the 3-dimensional ocean sea-water
           pressure array.
-        
 
 Requirements
 ------------
@@ -187,7 +186,8 @@ def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
     logger.warn(msg=msg)
     check_mandvars(
         varobj=varobj,
-        varlist=["absolute_salinity", "conservative_temperature", "seawater_pressure"],
+        varlist=["absolute_salinity",
+                 "conservative_temperature", "seawater_pressure"],
     )
     insitu_temp = numpy.zeros(
         numpy.shape(varobj.conservative_temperature.values.magnitude)

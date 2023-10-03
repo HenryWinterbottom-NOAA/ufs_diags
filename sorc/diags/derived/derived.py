@@ -17,6 +17,15 @@ Classes
 
         This is the base-class object for all derived classes.
 
+Functions
+---------
+
+    check_mandvars(varobj, varlist)
+
+        This function evaluates the SimpleNamespace object keys and
+        checks that each item in the variable list `varlist` exists
+        upon entry.
+
 Requirements
 ------------
 
@@ -76,23 +85,8 @@ class Derived:
         """
 
         # Define the base-class attributes.
-        self.logger = Logger(
-            caller_name=f"{__name__}.{self.__class__.__name__}")
+        self.logger = Logger(caller_name=f"{__name__}.{self.__class__.__name__}")
         self.constants_obj = self.get_constants()
-
-    def chunk(self: Generic, ncoords: int) -> List:
-        """ """
-
-        dchunk = int(ncoords/os.cpu_count())
-        chunk_list = []
-        chunk_size = 0
-        for idx in range(os.cpu_count()):
-            chunk_size = min(idx*dchunk, ncoords)
-            chunk_list.append(chunk_size)
-        chunk_list.append(ncoords)
-        chunk_list = sorted(list(set(chunk_list)))
-
-        return chunk_list
 
     @privatemethod
     def get_constants(self: Generic) -> SimpleNamespace:
@@ -201,16 +195,46 @@ class Derived:
 
         return compute_method
 
+
 # ----
 
 
-def chunk_list(ncoords, *args, **kwargs):
-    chunks_list = Derived().chunk(ncoords=ncoords)
+def check_mandvars(varobj: SimpleNamespace, varlist: List) -> None:
+    """
+    Description
+    -----------
 
-    def function(func):
-        def wrapper(*func_args, **func_kwargs):
+    This function evaluates the SimpleNamespace object keys and checks
+    that each item in the variable list `varlist` exists upon entry.
 
-            result = func(*func_args, *args, **kwargs)
-            return result
-        return wrapper
-    return function
+    Parameters
+    ----------
+
+    varobj: SimpleNamespace
+
+        A Python SimpleNamespace object containing the variables from
+        which the diagnostic variables will be computed/defined.
+
+    varlist: List
+
+        A Python List containing the mandatory variables for the
+        respective diagnostic quantity.
+
+    Raises
+    ------
+
+    DerivedError:
+
+        - raised if a specified mandatory variable within `varlist`
+          does not exist within `varobj` upon entry.
+
+    """
+
+    # Check that all mandatory variables have been defined.
+    missvars = [item for item in varlist if item not in vars(varobj).keys()]
+    if len(missvars) != 0:
+        msg = (
+            f"The following mandatory variables cannot be found {missvars}. "
+            "Aborting!!!"
+        )
+        raise DerivedError(msg=msg)

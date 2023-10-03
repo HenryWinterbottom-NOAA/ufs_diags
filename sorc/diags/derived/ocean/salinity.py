@@ -1,22 +1,67 @@
-""" """
+"""
+Module
+------
 
+    salinity.py
+
+Description
+-----------
+
+    This module contains functions to compute sea-water salinity.
+
+Functions
+---------
+
+    absolute_from_practical(varobj)
+
+        This function computes the absolute salinity from the
+        practical salinity and returns a units.Quantity containing the
+        respective values and attributes; the following are the
+        mandatory computed/defined variables within the
+        SimpleNamespace object `varobj` upon entry:
+
+        - latitude; the geographical coordinate latitude array.
+
+        - longitude; the geographical coordinate longitude array.
+
+        - salinity; the practical salinity array.
+
+        - seawater_pressure; the sea-water pressure array.
+
+Requirements
+------------
+
+- gsw; https://www.teos-10.org/pubs/gsw/html/gsw_contents.html
+
+- metpy; https://unidata.github.io/MetPy/latest/index.html
+
+- ufs_pyutils; https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+
+Author(s)
+---------
+
+    Henry R. Winterbottom; 02 October 2023
+
+History
+-------
+
+    2023-10-02: Henry Winterbottom -- Initial implementation.
+
+"""
+
+import gc
 from types import SimpleNamespace
 
-import os
-
 import numpy
+from diags.derived.derived import check_mandvars
 from gsw import SA_from_SP
 from metpy.units import units
-
 from utils.logger_interface import Logger
-from diags.derived.derived import Derived, chunk_list
-
-from diags.derived.ocean import pressures
 
 # ----
 
 # Define all available module properties.
-__all__ = ["absolute_salinity_from_practical_salinity"]
+__all__ = ["absolute_from_practical"]
 
 # ----
 
@@ -25,84 +70,65 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def absolute_salinity_from_practical_salinity(
-        varobj: SimpleNamespace) -> numpy.array:
+def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
+    """
+    Description
+    -----------
+
+    This function computes the absolute salinity from the practical
+    salinity and returns a units.Quantity containing the respective
+    values and attributes; the following are the mandatory
+    computed/defined variables within the SimpleNamespace object
+    `varobj` upon entry:
+
+    - latitude; the geographical coordinate latitude array.
+
+    - longitude; the geographical coordinate longitude array.
+
+    - salinity; the practical salinity array.
+
+    - seawater_pressure; the sea-water pressure array.
+
+    Parameters
+    ----------
+
+    varobj: SimpleNamespace
+
+        A Python SimpleNamespace object containing the variables from
+        which the diagnostic variables will be computed/defined.
+
+    Returns
+    -------
+
+    abs_sal: units.Quantity
+
+        A Python units.Quantity variable containing the 3-dimensional
+        absolute salinity array.
+
     """
 
+    # Compute the absolute salinity from the practical salinity.
+    msg = "Computing absolute salinity."
+    logger.warn(msg=msg)
+    check_mandvars(
+        varobj=varobj,
+        varlist=["latitude", "longitude", "salinity", "seawater_pressure"],
+    )
+    abs_sal = numpy.zeros(numpy.shape(varobj.salinity.values.magnitude))
+    for idx in range(numpy.shape(varobj.salinity.values.magnitude)[0]):
+        msg = (
+            f"Computing absolute salinity for level {(idx+1)} of "
+            f"{numpy.shape(varobj.salinity.values.magnitude)[0]}."
+        )
+        logger.info(msg=msg)
+        abs_sal[idx, ...] = SA_from_SP(
+            SP=varobj.salinity.values.magnitude[idx, ...],
+            p=varobj.seawater_pressure.values.magnitude[idx, ...],
+            lat=varobj.latitude.values.magnitude,
+            lon=varobj.longitude.values.magnitude,
+        )
+        gc.collect()
+    abs_sal = units.Quantity(abs_sal, "g/kg")
+    gc.collect()
 
-    """
-
-    msg = "Computing absolute salinity from practical salinity."
-    logger.info(msg=msg)
-    (lat, lon) = (varobj.latitude.values.magnitude.ravel(),
-                  varobj.longitude.values.magnitude.ravel())
-    (nz, ny, nx) = numpy.shape(varobj.salinity.values.magnitude)
-    prac_sal = numpy.reshape(varobj.salinity.values.magnitude, (nz, ny*nx))
-    swpres = numpy.reshape(varobj.seawater_pressure.values.magnitude,
-                           (nz, ny*nx))
-
-    @chunk_list(nx*ny)
-    def compute_SA_from_SP():
-        abs_sal = numpy.zeros((nz, (nx*ny)))
-        for idx in range(len(chunks_list) - 1):
-            abs_sal[:, chunks_list[idx]:chunks_list[idx + 1]] = SA_from_SP(
-                SP=prac_sal[:, chunks_list[idx]:chunks_list[idx + 1]],
-                p=swpres[:, chunks_list[idx]:chunks_list[idx + 1]],
-                lat=lat[chunks_list[idx]:chunks_list[idx + 1]],
-                lon=lon[chunks_list[idx]:chunks_list[idx + 1]]
-            )
-
-        return abs_sal
-
-    abs_sal = compute_SA_from_SP()
-
-    print(numpy.nanmin(abs_sal), numpy.nanmax(abs_sal))
-
-    # chunk_list = Derived().chunk(ncoords=(nx*ny))
-    # for idx in range(len(chunk_list)-1):
-    #    abs_sal[:, chunk_list[idx]:chunk_list[idx+1]] = \
-    #        SA_from_SP(SP=prac_sal[:, chunk_list[idx]:chunk_list[idx+1]],
-    # p=swpres[:, chunk_list[idx]:chunk_list[idx+1]],
-    #                  lat=lat[chunk_list[idx]:chunk_list[idx+1]],
-    #                  lon=lon[chunk_list[idx]:chunk_list[idx+1]])
-
-
-#    print((ny*nx)/os.cpu_count())
-#    print(ny*nx)
-
-#    print(os.cpu_count())
-
-    quit()
-
-    abs_sal = SA_from_SP(SP=prac_sal, p=swpres, lat=lat, lon=lon)
-    # abs_sal = numpy.reshape(abs_sal, (nz, ny, nx))
-
-    # abs_sal = [compute_SA_from_SP(prac_sal=prac_sal[:, idx],
-    #                              swpres=swpres[:, idx],
-    #                              lat=lat[idx],
-    #                              lon=lon[idx]) for idx in range(nx*ny)]
-
-    print(numpy.nanmin(abs_sal), numpy.nanmax(abs_sal))
-
-    quit()
-
-    # prac_sal = numpy.reshape(varobj.salinity.values.magnitude, (varobj.salinity.values.magnitude[0], numpy.shape
-    # swpres=(varobj.seawater_pressure.values.to(
-    #    units.dbar)).magnitude[:, ...].ravel()
-    # (lat, lon)=(varobj.latitude.values.magnitude.ravel(),
-    #              varobj.longitude.values.magnitude.ravel())
-
-    # print(numpy.shape(prac_sal))
-    # print(numpy.shape(lat))
-    quit()
-
-    # abs_sal = (units.Quantity(SA_from_SP(
-    #    SP=prac_sal[:, 540:560, 720:790], p=swpres[:, 540:560, 720:790], lon=lon[540:560, 720:790], lat=lat[540:560, 720:790]), "g/kg"))
-
-    # print(numpy.nanmin(abs_sal), numpy.nanmax(abs_sal))
-
-    # print(abs_sal)
-
-    # return abs_sal
-
-    quit()
+    return abs_sal

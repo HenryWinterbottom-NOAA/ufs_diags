@@ -16,7 +16,15 @@ Functions
     pressure_from_depth(varobj)
 
         This function computes the absolute sea-water pressure profile
-        as a function of depth and latitude.
+        as a function of depth and latitude; the following are the
+        mandatory computed/defined variables within the
+        SimpleNamespace object `varobj` upon entry:
+
+        - depth; the 3-dimensional oceanic depth array.
+
+        - latitude; the geographical coordinate latitude array.
+
+        - seawater_pressure; the sea-water pressure array.
 
 Requirements
 ------------
@@ -35,23 +43,23 @@ Author(s)
 History
 -------
 
-    2023-03-09: Henry Winterbottom -- Initial implementation.
+    2023-09-27: Henry Winterbottom -- Initial implementation.
 
 """
 
+import gc
 from types import SimpleNamespace
 
 import numpy
+from diags.derived.derived import check_mandvars
 from gsw import p_from_z
 from metpy.units import units
 from utils.logger_interface import Logger
-from tools import parser_interface
-from diags.derived.derived import Derived
 
 # ----
 
 # Define all available module properties.
-__all__ = ["pressure_from_depth"]
+__all__ = ["seawater_from_depth"]
 
 # ----
 
@@ -60,47 +68,57 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def absolute_pressure_from_seawater_pressure(varobj: SimpleNamespace) -> numpy.array:
-    """ """
-
-
-# ----
-
-def seawater_pressure_from_depth(varobj: SimpleNamespace) -> numpy.array:
+def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
 
     This function computes the absolute sea-water pressure profile as
-    a function of depth and latitude.
+    a function of depth and latitude; the following are the mandatory
+    computed/defined variables within the SimpleNamespace object
+    `varobj` upon entry:
+
+    - depth; the 3-dimensional oceanic depth array.
+
+    - latitude; the geographical coordinate latitude array.
+
+    - seawater_pressure; the sea-water pressure array.
 
     Parameters
     ----------
 
     varobj: SimpleNamespace
 
-        A Python SimpleNamespace object containing, at minimum, the
-        3-dimensional depth array and the 2-dimensionl latitude array.
+        A Python SimpleNamespace object containing the variables from
+        which the diagnostic variables will be computed/defined.
 
     Returns
     -------
 
-    pressure: numpy.array
+    sw_pres: units.Quantity
 
-        A Python numpy.array variable containing the 3-dimensional
-        grid of absolute sea-water pressure.
+        A Python units.Quantity variable containing the 3-dimensional
+       absolute sea-water pressure array.
 
     """
 
     # Compute the pressure profile as a function of depth.
-    msg = "Computing the sea-water pressure from depth and latitude."
-    logger.info(msg=msg)
-    constants_obj = Derived().constants_obj
-    prsunits = parser_interface.object_getattr(
-        object_in=units, key=varobj.seawater_pressure.units)
-    depth = -1.0*varobj.depth.values.magnitude
-    lat = varobj.latitude.values.magnitude
-    pressure = (units.Quantity(
-        p_from_z(z=depth, lat=lat), "dbar")).to(prsunits)
+    msg = "Computing the sea-water pressure."
+    logger.warn(msg=msg)
+    check_mandvars(varobj=varobj, varlist=["depth", "latitude"])
+    sw_pres = numpy.zeros(numpy.shape(varobj.depth.values.magnitude))
+    for idx in range(numpy.shape(sw_pres)[0]):
+        msg = (
+            f"Computing sea-water pressure from depth for level {(idx+1)} "
+            f"of {numpy.shape(sw_pres)[0]}."
+        )
+        logger.info(msg=msg)
+        sw_pres[idx, ...] = p_from_z(
+            z=(-1.0 * varobj.depth.values.magnitude)[idx, ...],
+            lat=varobj.latitude.values.magnitude,
+        )
+        gc.collect()
+    sw_pres = units.Quantity(sw_pres, "dbar")
+    gc.collect()
 
-    return pressure
+    return sw_pres

@@ -11,7 +11,6 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
-import subprocess
 import sys
 
 sys.path.insert(0, os.path.abspath("."))
@@ -125,13 +124,3 @@ html_sidebars = {}
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "ufs_diags"
-
-# subprocess.run(
-#    [
-#        "git",
-#        "clone",
-#        "https://github.com/HenryWinterbottom-NOAA/ufs_pyutils",
-#        "./ufs_pyutils",
-#    ]
-# )
-# sys.path.append("./ufs_pyutils")

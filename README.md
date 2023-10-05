@@ -6,6 +6,18 @@
 
 [![Python Coding Standards](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml/badge.svg)](https://github.com/HenryWinterbottom-NOAA/ufs_diags/actions/workflows/pycodestyle.yaml)
 
+# Overview
+
+This repository contains application programming interface (API) for
+diagnostic variable computations for supported numerical weather
+prediction (NWP) model forecast and analysis variable fields.
+
+- **Authors:** [Henry R. Winterbottom](mailto:henry.winterbottom@noaa.gov)
+- **Maintainers:** Henry R. Winterbottom
+- **Version:** 0.0.1
+- **License:** LGPL v2.1
+- **Copyright**: Henry R. Winterbottom
+
 # Cloning
 
 This repository utilizes several sub-modules from various sources. To
@@ -87,3 +99,4 @@ follow those listed below.
 - `fix/user_fork_name`: Bug-type fixes for the application(s) that do not require immediate attention.
 
 - `hotfix/user_fork_name`: Bug-type fixes which require immediate attention to fix issues that compromise the integrity of the respective application(s). 
+

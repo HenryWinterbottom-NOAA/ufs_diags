@@ -39,7 +39,7 @@ executed as follows.
 
 .. code-block:: bash
 
-   user@host:$ /path/to/docker ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
+   user@host:$ /path/to/docker pull ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
    user@host:$ /path/to/docker container run -it ghcr.io/henrywinterbottom-noaa/ubuntu20.04.ufs_diags:latest
 
 .. toctree::

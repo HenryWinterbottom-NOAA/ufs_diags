@@ -12,12 +12,18 @@
 #
 import os
 import sys
+import subprocess
 
-#sys.path.insert(0, os.path.abspath("."))
-#sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
+sys.path.insert(0, os.path.abspath("."))
+sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
+sys.path.insert(0, os.path.abspath("../../sorc/diags"))
+
+subprocess.run(['git', 'clone', 'https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git', '/home'], check=True, text=True)
+sys.path.insert(0, "/home/ufs_pyutils/sorc")
+
 #sys.path.insert(0, os.path.abspath("../../sorc/diags"))
 
-sys.path.insert(0, os.path.abspath("../../sorc/diags"))
+
 
 # -- Project information -----------------------------------------------------
 

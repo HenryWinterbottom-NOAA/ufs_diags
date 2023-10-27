@@ -19,9 +19,6 @@ import sys
 
 sys.path.insert(0, os.path.abspath("../../sorc/diags"))
 
-print(os.getcwd())
-quit()
-
 # -- Project information -----------------------------------------------------
 
 project = "UFS Analysis and Forecast Diagnostics API"

@@ -1,15 +1,33 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+#!/usr/bin/env python3
 
-# -- Path setup --------------------------------------------------------------
+"""
+Script
+------
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
+    conf.py
+
+Description
+-----------
+
+    This script is the driver script for configuring the
+    `sphinx-build` runtime environment in order to build the
+    respective API.
+
+Author(s)
+---------
+
+    Henry R. Winterbottom; 27 October 2023
+
+History
+-------
+
+    2023-10-27: Henry Winterbottom -- Initial implementation.
+
+"""
+
+# ----
+
+
 import os
 import sys
 import subprocess
@@ -17,30 +35,23 @@ import subprocess
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
 sys.path.insert(0, os.path.abspath("../../sorc/diags"))
-
 subprocess.run(['git', 'clone', '--recursive', 'https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git'], check=True, text=True)
 sys.path.insert(0, os.path.join(os.getcwd(), "ufs_pyutils/sorc"))
 
-#sys.path.insert(0, os.path.abspath("../../sorc/diags"))
+# ----
 
+def setup(app):
+    app.add_css_file("custom.css")  # may also be an URL
+    app.add_css_file("theme_overrides.css")  # may also be an URL
 
-
-# -- Project information -----------------------------------------------------
+# ----
 
 project = "UFS Analysis and Forecast Diagnostics API"
 copyright = "2023 Henry R. Winterbottom"
 author = "2023 Henry R. Winterbottom"
-
-# The full version, including alpha/beta/rc tags
 # release = None
 
-
-# -- General configuration ---------------------------------------------------
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-
+# General configuration 
 extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
@@ -53,81 +64,25 @@ extensions = [
     "sphinx_autodoc_typehints",
     "readthedocs_ext.readthedocs",
 ]
+exclude_patterns = []
+source_suffix = ".rst"
+master_doc = "index"
 
+# API attributes.
 autoapi_dirs = [
     "../../sorc/diags/derived",
     "../../sorc/diags/grids",
     "../../sorc/diags/interp",
     "../../sorc/diags/transforms",
 ]
-
 autoapi_type = "python"
 autoapi_ignore = []
 
-# bibtex_bibfiles = ['references.bib']
-
-# Add any paths that contain templates here, relative to this directory.
-# templates_path = ['_templates']
-
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
-
-# The master toctree document.
-master_doc = "index"
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
-
-# The name of the Pygments (syntax highlighting) style to use.
+# Options for HTML output.
 pygments_style = "sphinx"
-
-
-# -- Options for HTML output -------------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = "furo"  # 'sphinx_rtd_theme'
-html_theme_path = [
-    "_themes",
-]
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
+html_theme = "furo"
+html_theme_path = ["_themes"]
 html_theme_options = {"body_max_width": "none"}
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
 html_context = {}
-
-
-def setup(app):
-    app.add_css_file("custom.css")  # may also be an URL
-    app.add_css_file("theme_overrides.css")  # may also be an URL
-
-
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# The default sidebars (for documents that don't match any pattern) are
-# defined by theme itself.  Builtin themes are using these templates by
-# default: ``['localtoc.html', 'relations.html', 'sourcelink.html',
-# 'searchbox.html']``.
-#
-html_sidebars = {}
-
-
-# -- Options for HTMLHelp output ---------------------------------------------
-
-# Output file base name for HTML help builder.
 htmlhelp_basename = "ufs_diags"

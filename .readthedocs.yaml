@@ -18,5 +18,4 @@ python:
     - requirements: requirements.txt
     - requirements: git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git@develop /home/
 env:
-  global:
-    - PYTHONPATH: /home/ufs_pyutils/sorc
+  - PYTHONPATH: /home/ufs_pyutils/sorc

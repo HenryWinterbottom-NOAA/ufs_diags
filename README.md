@@ -53,7 +53,7 @@ In order to install the respective Python packages upon which
 ~~~shell
 user@host:$ cd /path/to/ufs_diags
 user@host:$ /path/to/pip install update
-user@host:$ /path/to/pip install -r /path/to/ufs_diags/requirements.txt
+user@host:$ /path/to/pip install -r /path/to/ufs_diags/requirements.pip
 ~~~
 
 For additional information using `pip` and `requirements.txt` type files, see [here](https://pip.pypa.io/en/stable/reference/requirements-file-format/).

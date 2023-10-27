@@ -6,6 +6,8 @@ build:
     python: "3.9"
   apt_packages:
     - gfortran
+  environment:
+    PYTHONPATH: /home/ufs_pyutils/sorc
 sphinx:
   configuration: docs/source/conf.py
 python:

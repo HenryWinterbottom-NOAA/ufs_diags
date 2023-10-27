@@ -4,4 +4,3 @@ sphinx-autoapi
 sphinx-autodoc-typehints
 git+https://www.github.com/HenryWinterbottom-NOAA/numpydoc@feature/ufs_pyutils_updates
 git+https://www.github.com/HenryWinterbottom-NOAA/ufs_pyutils@develop /home/
-PYTHONPATH=/home/ufs_pyutils/sorc

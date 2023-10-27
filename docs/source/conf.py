@@ -13,13 +13,16 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("."))
-sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
-sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc/diags"))
+#sys.path.insert(0, os.path.abspath("."))
+#sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
+#sys.path.insert(0, os.path.abspath("../../sorc/diags"))
+
+sys.path.insert(0, os.path.abspath("../../sorc"))
+sys.path.insert(0, os.path.abspath("../../sorc/diags"))
 
 # -- Project information -----------------------------------------------------
 
-project = "UFS Diagnostics"
+project = "UFS Analysis and Forecast Diagnostics API"
 copyright = "2023 Henry R. Winterbottom"
 author = "2023 Henry R. Winterbottom"
 
@@ -42,9 +45,8 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "numpydoc",
-    #    "autoapi.extension",
     "sphinx_autodoc_typehints",
-    # "readthedocs_ext.readthedocs",
+    "readthedocs_ext.readthedocs",
 ]
 
 autoapi_dirs = [

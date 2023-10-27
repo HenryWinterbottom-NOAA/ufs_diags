@@ -6,12 +6,6 @@ build:
     python: "3.9"
   apt_packages:
     - gfortran
-requirements:
-  - -e /home/packages
-  - git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git@develop
-env:
-  global:
-    - PYTHONPATH: /home/packages/ufs_pyutils/sorc
 sphinx:
   configuration: docs/source/conf.py
 python:
@@ -20,5 +14,11 @@ python:
       path: .
       extra_requirements:
         - all
-    - requirements: docs/source/requirements.txt
-    - requirements: requirements.txt
+    - requirements:
+        - docs/source/requirements.txt
+        - requirements.txt
+        - -e /home/packages
+        - git+https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git@develop
+env:
+  global:
+    - PYTHONPATH: /home/packages/ufs_pyutils/sorc

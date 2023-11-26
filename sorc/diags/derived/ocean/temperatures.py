@@ -64,7 +64,6 @@ History
 
 """
 
-import gc
 from types import SimpleNamespace
 
 import numpy
@@ -85,7 +84,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity:
+async def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -134,9 +133,7 @@ def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity:
             SA=varobj.absolute_salinity.values.magnitude[idx, ...],
             pt=varobj.pottemp.values.magnitude[idx, ...],
         )
-        gc.collect()
     cons_temp = units.Quantity(cons_temp, "degC")
-    gc.collect()
 
     return cons_temp
 
@@ -144,7 +141,7 @@ def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity:
 # ----
 
 
-def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
+async def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -186,8 +183,7 @@ def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
     logger.warn(msg=msg)
     check_mandvars(
         varobj=varobj,
-        varlist=["absolute_salinity",
-                 "conservative_temperature", "seawater_pressure"],
+        varlist=["absolute_salinity", "conservative_temperature", "seawater_pressure"],
     )
     insitu_temp = numpy.zeros(
         numpy.shape(varobj.conservative_temperature.values.magnitude)
@@ -200,8 +196,6 @@ def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
             CT=varobj.conservative_temperature.values.magnitude[idx, ...],
             p=varobj.seawater_pressure.values.magnitude[idx, ...],
         )
-        gc.collect()
     insitu_temp = units.Quantity(insitu_temp, "degC")
-    gc.collect()
 
     return insitu_temp

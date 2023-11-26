@@ -47,7 +47,6 @@ History
 
 """
 
-import gc
 from types import SimpleNamespace
 
 import numpy
@@ -68,7 +67,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
+async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -98,27 +97,18 @@ def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     sw_pres: units.Quantity
 
         A Python units.Quantity variable containing the 3-dimensional
-        absolute sea-water pressure array.
+        absolute sea-water pressure array; units are dbar.
 
     """
 
     # Compute the pressure profile as a function of depth.
-    msg = "Computing the sea-water pressure."
+    msg = "Computing the sea-water pressure from depth."
     logger.warn(msg=msg)
     check_mandvars(varobj=varobj, varlist=["depth", "latitude"])
     sw_pres = numpy.zeros(numpy.shape(varobj.depth.values.magnitude))
-    for idx in range(numpy.shape(sw_pres)[0]):
-        msg = (
-            f"Computing sea-water pressure from depth for level {(idx+1)} "
-            f"of {numpy.shape(sw_pres)[0]}."
-        )
-        logger.info(msg=msg)
-        sw_pres[idx, ...] = p_from_z(
-            z=(-1.0 * varobj.depth.values.magnitude)[idx, ...],
-            lat=varobj.latitude.values.magnitude,
-        )
-        gc.collect()
+    sw_pres = p_from_z(
+        z=-1.0 * varobj.depth.values.magnitude, lat=varobj.latitude.values.magnitude
+    )
     sw_pres = units.Quantity(sw_pres, "dbar")
-    gc.collect()
 
     return sw_pres

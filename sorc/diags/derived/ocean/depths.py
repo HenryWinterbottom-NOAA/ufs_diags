@@ -46,7 +46,6 @@ History
 
 # ----
 
-import gc
 from types import SimpleNamespace
 
 import numpy
@@ -66,7 +65,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
+async def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -114,6 +113,5 @@ def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
     depth = numpy.tile(
         varobj.depth_profile.values, (depth.shape[2], depth.shape[1], 1)
     ).T
-    gc.collect()
 
     return depth

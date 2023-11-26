@@ -49,7 +49,6 @@ History
 
 """
 
-import gc
 from types import SimpleNamespace
 
 import numpy
@@ -70,7 +69,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
+async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -103,12 +102,12 @@ def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     abs_sal: units.Quantity
 
         A Python units.Quantity variable containing the 3-dimensional
-        absolute salinity array.
+        absolute salinity array; units are `g/kg`.
 
     """
 
     # Compute the absolute salinity from the practical salinity.
-    msg = "Computing absolute salinity."
+    msg = "Computing absolute salinity from practical salinity."
     logger.warn(msg=msg)
     check_mandvars(
         varobj=varobj,
@@ -127,8 +126,5 @@ def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
             lat=varobj.latitude.values.magnitude,
             lon=varobj.longitude.values.magnitude,
         )
-        gc.collect()
-    abs_sal = units.Quantity(abs_sal, "g/kg")
-    gc.collect()
 
     return abs_sal

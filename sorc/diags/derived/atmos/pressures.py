@@ -66,7 +66,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def pressure_from_thickness(varobj: SimpleNamespace) -> units.Quantity:
+async def pressure_from_thickness(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
@@ -113,7 +113,7 @@ def pressure_from_thickness(varobj: SimpleNamespace) -> units.Quantity:
 # ----
 
 
-def pressure_to_sealevel(varobj: SimpleNamespace) -> units.Quantity:
+async def pressure_to_sealevel(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------

@@ -56,7 +56,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def height_from_pressure(varobj: SimpleNamespace) -> units.Quantity:
+async def height_from_pressure(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------

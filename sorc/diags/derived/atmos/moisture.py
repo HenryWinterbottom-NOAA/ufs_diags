@@ -57,7 +57,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def spfh_to_mxrt(varobj: SimpleNamespace) -> units.Quantity:
+async def spfh_to_mxrt(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------

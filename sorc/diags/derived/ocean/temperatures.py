@@ -96,11 +96,11 @@ async def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity
     msg = "Computing conservative temperature from potential temperature."
     logger.info(msg=msg)
     ctempdict = {
-        "ptemp": units.Quantity(varobj.ptemp.values, "degC").magnitude,
-        "pres": units.Quantity(varobj.pres.values, "dbar").magnitude,
-        "psaln": units.Quantity(varobj.psaln.values, "dimensionless").magnitude,
-        "lons": units.Quantity(varobj.lons.values, "degree").magnitude,
-        "lats": units.Quantity(varobj.lats.values, "degree").magnitude,
+        "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
+        "pres": units.Quantity(varobj.seawater_pressure.values, "dbar").magnitude,
+        "psaln": units.Quantity(varobj.salinity.values, "dimensionless").magnitude,
+        "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
     }
     ctempobj = parser_interface.dict_toobject(in_dict=ctempdict)
     asaln = units.Quantity(
@@ -148,11 +148,11 @@ async def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
     msg = "Computing insitu-temperature from conservative temperature."
     logger.status(msg=msg)
     itempdict = {
-        "ptemp": units.Quantity(varobj.ptemp.values, "degC").magnitude,
-        "pres": units.Quantity(varobj.pres.values, "dbar").magnitude,
-        "psaln": units.Quantity(varobj.psaln.values, "dimensionless").magnitude,
-        "lons": units.Quantity(varobj.lons.values, "degree").magnitude,
-        "lats": units.Quantity(varobj.lats.values, "degree").magnitude,
+        "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
+        "pres": units.Quantity(varobj.seawater_pressure.values, "dbar").magnitude,
+        "psaln": units.Quantity(varobj.salinity.values, "dimensionless").magnitude,
+        "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
     }
     itempobj = parser_interface.dict_toobject(in_dict=itempdict)
     asaln = units.Quantity(

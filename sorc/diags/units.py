@@ -42,12 +42,10 @@ import functools
 from types import SimpleNamespace
 from typing import Callable, Dict, Tuple
 
-from pint import UnitRegistry
-from tools import parser_interface
-
 # ----
 
-UNIT_REG = UnitRegistry()
+# Define all available module properties.
+__all__ = ["mks_units"]
 
 # ----
 
@@ -78,7 +76,7 @@ def mks_units(func: Callable) -> Callable:
     """
 
     @functools.wraps(func)
-    def wrapped_function(*args: Tuple, **kwargs: Dict) -> SimpleNamespace:
+    async def wrapped_function(*args: Tuple, **kwargs: Dict) -> SimpleNamespace:
         """
         Description
         -----------
@@ -102,34 +100,20 @@ def mks_units(func: Callable) -> Callable:
         Returns
         -------
 
-        varobj: SimpleNamespace
+        varobj: SimpleNamespace # TODO
 
             A Python SimpleNamespace object containing the updated
-            respective variable arrays in accordance with the MKS unit
+            variable arrays in accordance with the MKS unit
             transforms.
 
         """
 
         # Collect the Python SimpleNamespace object containing the
-        # native variable quantities.
-        varobj = func(*args, **kwargs)
-        for var in vars(varobj):
-            # Convert the native variable quantities to MKS variable
-            # quantities.
-            varqnt = parser_interface.object_getattr(
-                object_in=varobj, key=var, force=True
-            )
-            quantity = UNIT_REG.Quantity(varqnt.values, varqnt.units)
-            quantity_mks = quantity.to_base_units()
-            varobj = parser_interface.object_setattr(
-                object_in=varobj, key=var, value=quantity_mks
-            )
-            varqnt.values = quantity_mks.magnitude
-            varqnt.units = quantity_mks.units
-            varobj = parser_interface.object_setattr(
-                object_in=varobj, key=var, value=varqnt
-            )
+        # native variable quantities and convert the native variable
+        # quantities to MKS variable quantities.
+        varobj = await func(*args, **kwargs)
+        varobj_mks = varobj.to_base_units()
 
-        return varobj
+        return varobj_mks
 
     return wrapped_function

@@ -23,7 +23,7 @@ respective function(s).
    * - ``pottemp``
      - Profile of potential temperature values.
    * - ``seawater_pressure``
-     - Profile of seawater pressure values.
+     - Profile of sea-water pressure values.
    * - ``salinity``
      - Profile of practical salinity values.
 		  
@@ -47,6 +47,6 @@ respective function(s).
    * - ``pottemp``
      - Profile of potential temperature values.
    * - ``seawater_pressure``
-     - Profile of seawater pressure values.
+     - Profile of sea-water pressure values.
    * - ``salinity``
      - Profile of practical salinity values.

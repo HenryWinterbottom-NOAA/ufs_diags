@@ -16,15 +16,7 @@ Functions
     seawater_from_depth(varobj)
 
         This function computes the absolute sea-water pressure profile
-        as a function of depth and latitude; the following are the
-        mandatory computed/defined variables within the
-        SimpleNamespace object `varobj` upon entry:
-
-        - depth; the 3-dimensional oceanic depth array.
-
-        - latitude; the geographical coordinate latitude array.
-
-        - seawater_pressure; the sea-water pressure array.
+        as a function of depth and latitude.
 
 Requirements
 ------------
@@ -47,12 +39,14 @@ History
 
 """
 
+# ----
+
 from types import SimpleNamespace
 
-import numpy
-from diags.derived.derived import check_mandvars
+from diags.units import mks_units
 from gsw import p_from_z
 from metpy.units import units
+from tools import parser_interface
 from utils.logger_interface import Logger
 
 # ----
@@ -67,21 +61,14 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
+@mks_units
 async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
     -----------
 
     This function computes the absolute sea-water pressure profile as
-    a function of depth and latitude; the following are the mandatory
-    computed/defined variables within the SimpleNamespace object
-    `varobj` upon entry:
-
-    - depth; the 3-dimensional oceanic depth array.
-
-    - latitude; the geographical coordinate latitude array.
-
-    - seawater_pressure; the sea-water pressure array.
+    a function of depth and latitude.
 
     Parameters
     ----------
@@ -94,21 +81,21 @@ async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    sw_pres: units.Quantity
+    pres: units.Quantity
 
         A Python units.Quantity variable containing the 3-dimensional
-        absolute sea-water pressure array; units are dbar.
+        absolute sea-water pressure array; units are ``dbar``.
 
     """
 
     # Compute the pressure profile as a function of depth.
     msg = "Computing the sea-water pressure from depth."
     logger.warn(msg=msg)
-    check_mandvars(varobj=varobj, varlist=["depth", "latitude"])
-    sw_pres = numpy.zeros(numpy.shape(varobj.depth.values.magnitude))
-    sw_pres = p_from_z(
-        z=-1.0 * varobj.depth.values.magnitude, lat=varobj.latitude.values.magnitude
-    )
-    sw_pres = units.Quantity(sw_pres, "dbar")
+    presdict = {
+        "depth": units.Quantity(varobj.pottemp.values, "degC").magnitude,
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
+    }
+    presobj = parser_interface.dict_toobject(in_dict=presdict)
+    pres = units.Quantity(p_from_z(z=-1.0 * presobj.depth, lat=presobj.lats), "dbar")
 
-    return sw_pres
+    return pres

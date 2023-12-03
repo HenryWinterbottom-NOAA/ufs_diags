@@ -15,15 +15,7 @@ Functions
     depth_from_profile(varobj)
 
         This function defines a 3-dimensional grid of depth values
-        from a single column array of depth values; the following are
-        the mandatory computed/defined variables within the
-        SimpleNamespace object `varobj` upon entry:
-
-        - depth_profile; the 1-dimensional depth profile array.
-
-        - latitude; the geographical coordinate latitude array.
-
-        - longitude; the geographical coordinate longitude array.
+        from a single column array of depth values.
 
 Requirements
 ------------
@@ -46,11 +38,16 @@ History
 
 # ----
 
+# pylint: disable=invalid-name
+# pylint: disable=unused-variable
+
+# ----
+
 from types import SimpleNamespace
 
 import numpy
-from diags.derived.derived import check_mandvars
 from metpy.units import units
+from tools import parser_interface
 from utils.logger_interface import Logger
 
 # ----
@@ -71,15 +68,7 @@ async def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
     -----------
 
     This function defines a 3-dimensional grid of depth values from a
-    single column array of depth values; the following are the
-    mandatory computed/defined variables within the SimpleNamespace
-    object `varobj` upon entry:
-
-    - depth_profile; the 1-dimensional depth profile array.
-
-    - latitude; the geographical coordinate latitude array.
-
-    - longitude; the geographical coordinate longitude array.
+    single column array of depth values.
 
     Parameters
     ----------
@@ -95,23 +84,22 @@ async def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
     depth: units.Quantity
 
         A Python units.Quantity variable containing a 3-dimensional
-        grid of depth values.
+        grid of depth values; units are ``m``.
 
     """
 
     # Initialize and define the depth grid.
     msg = "Defining depth grid from depth profile array."
     logger.info(msg=msg)
-    check_mandvars(varobj=varobj, varlist=["depth_profile", "latitude", "longitude"])
-    depth = numpy.zeros(
-        (
-            len(varobj.depth_profile.values),
-            len(varobj.latitude.values[:, 0]),
-            len(varobj.longitude.values[0, :]),
-        )
-    )
-    depth = numpy.tile(
-        varobj.depth_profile.values, (depth.shape[2], depth.shape[1], 1)
-    ).T
+    depthdict = {
+        "z": units.Quantity(varobj.depth_profile.values, "m").magnitude,
+        "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
+    }
+    depthobj = parser_interface.dict_toobject(in_dict=depthdict)
+    nx = len(depthobj.lons[0, :])
+    ny = len(depthobj.lats[:, 0])
+    nz = len(depthobj.z)
+    depth = units.Quantity(numpy.tile(depthobj.z, (nx, ny, 1)).T, "m")
 
     return depth

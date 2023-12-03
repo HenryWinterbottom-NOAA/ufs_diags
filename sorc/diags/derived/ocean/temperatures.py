@@ -113,7 +113,6 @@ async def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity
 
     return ctemp
 
-
 # ----
 
 

@@ -15,18 +15,7 @@ Functions
     absolute_from_practical(varobj)
 
         This function computes the absolute salinity from the
-        practical salinity and returns a units.Quantity containing the
-        respective values and attributes; the following are the
-        mandatory computed/defined variables within the
-        SimpleNamespace object `varobj` upon entry:
-
-        - latitude; the geographical coordinate latitude array.
-
-        - longitude; the geographical coordinate longitude array.
-
-        - salinity; the practical salinity array.
-
-        - seawater_pressure; the sea-water pressure array.
+        practical salinity.
 
 Requirements
 ------------
@@ -51,10 +40,9 @@ History
 
 from types import SimpleNamespace
 
-import numpy
-from diags.derived.derived import check_mandvars
 from gsw import SA_from_SP
 from metpy.units import units
+from tools import parser_interface
 from utils.logger_interface import Logger
 
 # ----
@@ -75,18 +63,7 @@ async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     -----------
 
     This function computes the absolute salinity from the practical
-    salinity and returns a units.Quantity containing the respective
-    values and attributes; the following are the mandatory
-    computed/defined variables within the SimpleNamespace object
-    `varobj` upon entry:
-
-    - latitude; the geographical coordinate latitude array.
-
-    - longitude; the geographical coordinate longitude array.
-
-    - salinity; the practical salinity array.
-
-    - seawater_pressure; the sea-water pressure array.
+    salinity.
 
     Parameters
     ----------
@@ -99,32 +76,28 @@ async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    abs_sal: units.Quantity
+    asaln: units.Quantity
 
         A Python units.Quantity variable containing the 3-dimensional
-        absolute salinity array; units are `g/kg`.
+        absolute salinity array; units are ``g/kg``.
 
     """
 
     # Compute the absolute salinity from the practical salinity.
     msg = "Computing absolute salinity from practical salinity."
     logger.warn(msg=msg)
-    check_mandvars(
-        varobj=varobj,
-        varlist=["latitude", "longitude", "salinity", "seawater_pressure"],
+    asalndict = {
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
+        "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
+        "pres": units.Quantity(varobj.seawater_pressure.values, "dbar").magnitude,
+        "psaln": units.Quantity(varobj.salinity.values, "dimensionless").magnitude,
+    }
+    asalnobj = parser_interface.dict_toobject(in_dict=asalndict)
+    asaln = units.Quantity(
+        SA_from_SP(
+            SP=asalnobj.psaln, p=asalnobj.pres, lat=asalnobj.lats, lon=asalnobj.lons
+        ),
+        "g/kg",
     )
-    abs_sal = numpy.zeros(numpy.shape(varobj.salinity.values.magnitude))
-    for idx in range(numpy.shape(varobj.salinity.values.magnitude)[0]):
-        msg = (
-            f"Computing absolute salinity for level {(idx+1)} of "
-            f"{numpy.shape(varobj.salinity.values.magnitude)[0]}."
-        )
-        logger.info(msg=msg)
-        abs_sal[idx, ...] = SA_from_SP(
-            SP=varobj.salinity.values.magnitude[idx, ...],
-            p=varobj.seawater_pressure.values.magnitude[idx, ...],
-            lat=varobj.latitude.values.magnitude,
-            lon=varobj.longitude.values.magnitude,
-        )
 
-    return abs_sal
+    return asaln

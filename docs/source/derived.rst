@@ -9,6 +9,7 @@ Derived Quantities
    atmos.pressures
    atmos.winds
    ocean.depths
+   ocean.heatcontent
    ocean.pressures
    ocean.salinity
    ocean.temperatures

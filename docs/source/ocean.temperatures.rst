@@ -5,7 +5,7 @@ Oceanic Temperatures
 
 .. autofunction:: conservative_from_potential
 
-The following are the mandatory SimpleNamespace variables upon
+The following are the mandatory ``SimpleNamespace`` variables upon
 entry. Note that all unit conversions are handled within the
 respective function(s).
 
@@ -16,18 +16,22 @@ respective function(s).
 
    * - **Variable**
      - **Description**
-   * - ``lats``
+   * - ``latitude``
      - Array of latitude coordinate values.
-   * - ``lons``
+   * - ``longitude``
      - Array of longitude coordinate values.
-   * - ``ptemp``
+   * - ``pottemp``
      - Profile of potential temperature values.
-   * - ``pres``
+   * - ``seawater_pressure``
      - Profile of seawater pressure values.
-   * - ``psaln``
+   * - ``salinity``
      - Profile of practical salinity values.
 		  
 .. autofunction:: insitu_from_conservative
+
+The following are the mandatory ``SimpleNamespace`` variables upon
+entry. Note that all unit conversions are handled within the
+respective function(s).
 
 .. list-table::
    :widths: auto
@@ -36,13 +40,13 @@ respective function(s).
 
    * - **Variable**
      - **Description**
-   * - ``lats``
+   * - ``latitude``
      - Array of latitude coordinate values.
-   * - ``lons``
+   * - ``longitude``
      - Array of longitude coordinate values.
-   * - ``ptemp``
+   * - ``pottemp``
      - Profile of potential temperature values.
-   * - ``pres``
+   * - ``seawater_pressure``
      - Profile of seawater pressure values.
-   * - ``psaln``
+   * - ``salinity``
      - Profile of practical salinity values.

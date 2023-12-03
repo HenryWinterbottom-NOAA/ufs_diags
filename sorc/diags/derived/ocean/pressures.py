@@ -92,7 +92,7 @@ async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     msg = "Computing the sea-water pressure from depth."
     logger.warn(msg=msg)
     presdict = {
-        "depth": units.Quantity(varobj.pottemp.values, "degC").magnitude,
+        "depth": units.Quantity(varobj.depth.values, "m").magnitude,
         "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
     }
     presobj = parser_interface.dict_toobject(in_dict=presdict)

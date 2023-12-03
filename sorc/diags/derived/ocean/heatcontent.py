@@ -52,12 +52,13 @@ History
 from types import SimpleNamespace
 
 import numpy
+from diags.derived.ocean.salinity import absolute_from_practical
 from diags.derived.ocean.temperatures import (
     conservative_from_potential,
     insitu_from_conservative,
 )
 from diags.units import mks_units
-from gsw import SA_from_SP, cp_t_exact, specvol_anom_standard
+from gsw import cp_t_exact, specvol_anom_standard
 from metpy.units import units
 from tools import parser_interface
 from utils.logger_interface import Logger
@@ -104,29 +105,20 @@ async def specific_heat_capacity(varobj: SimpleNamespace) -> units.Quantity:
     msg = "Computing the specific heat capacity of sea water."
     logger.warn(msg=msg)
     cpdict = {
-        "ptemp": units.Quantity(varobj.inputs.pottemp, "degC").magnitude,
-        "lons": units.Quantity(varobj.inputs.longitude, "degree").magnitude,
-        "lats": units.Quantity(varobj.inputs.latitude, "degree").magnitude,
-        "pres": units.Quantity(varobj.inputs.seawater_pressure, "dbar").magnitude,
-        "psaln": units.Quantity(varobj.inputs.salinity, "dimensionless").magnitude,
+        "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
+        "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
+        "pres": units.Quantity(varobj.seawater_pressure.values, "dbar").magnitude,
+        "psaln": units.Quantity(varobj.salinity.values, "dimensionless").magnitude,
     }
     cpobj = parser_interface.dict_toobject(in_dict=cpdict)
-
-    # TODO: Update to use `absolute_from_practical`.
     asaln = units.Quantity(
-        SA_from_SP(
-            SP=cpobj.psaln.values.magnitude,
-            p=cpobj.pres.values.magnitude,
-            lon=cpobj.lons.values.magnitude,
-            lat=cpobj.lats.values.magnitude,
-        ),
-        "g/kg",
+        await absolute_from_practical(varobj=varobj), "g/kg"
     ).magnitude
     itemp = units.Quantity(
-        await insitu_from_conservative(varobj=cpobj), "degC"
+        await insitu_from_conservative(varobj=varobj), "degC"
     ).magnitude
-    pres = units.Quantity(cpobj.pres.values, "dbar").magnitude
-    shc = units.Quantity(cp_t_exact(SA=asaln, t=itemp, p=pres), "joule/(kg*K)")
+    shc = units.Quantity(cp_t_exact(SA=asaln, t=itemp, p=cpobj.pres), "joule/(kg*K)")
 
     return shc
 
@@ -165,33 +157,28 @@ async def total_heat_content(varobj: SimpleNamespace) -> units.Quantity:
     msg = "Computing the integrated ocean heat content."
     logger.warn(msg=msg)
     ohcdict = {
-        "ptemp": units.Quantity(varobj.inputs.pottemp, "degC").magnitude,
-        "lons": units.Quantity(varobj.inputs.longitude, "degree").magnitude,
-        "lats": units.Quantity(varobj.inputs.latitude, "degree").magnitude,
-        "pres": units.Quantity(varobj.inputs.seawater_pressure, "dbar").magnitude,
-        "psaln": units.Quantity(varobj.inputs.salinity, "dimensionless").magnitude,
+        "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
+        "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
+        "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
+        "pres": units.Quantity(varobj.seawater_pressure.values, "dbar").magnitude,
+        "psaln": units.Quantity(varobj.salinity.values, "dimensionless").magnitude,
     }
     ohcobj = parser_interface.dict_toobject(in_dict=ohcdict)
-
-    # TODO: Update to use `absolute_from_practical`.
     asaln = units.Quantity(
-        SA_from_SP(
-            SP=ohcobj.psaln.values.magnitude,
-            p=ohcobj.pres.values.magnitude,
-            lon=ohcobj.lons.values.magnitude,
-            lat=ohcobj.lats.values.magnitude,
-        ),
-        "g/kg",
+        await absolute_from_practical(varobj=varobj), "g/kg"
     ).magnitude
     itemp = units.Quantity(
-        await insitu_from_conservative(varobj=ohcobj), "degC"
+        await insitu_from_conservative(varobj=varobj), "degC"
     ).magnitude
     ctemp = units.Quantity(
-        await conservative_from_potential(varobj=ohcobj), "degC"
+        await conservative_from_potential(varobj=varobj), "degC"
     ).magnitude
-    pres = units.Quantity(ohcobj.pres, "dbar").values.magnitude
     svas = units.Quantity(
-        numpy.trapz(specvol_anom_standard(SA=asaln, CT=ctemp, p=pres), x=pres, axis=0),
+        numpy.trapz(
+            specvol_anom_standard(SA=asaln, CT=ctemp, p=ohcobj.pres),
+            x=ohcobj.pres,
+            axis=0,
+        ),
         "m^3/kg",
     )
     shc = units.Quantity(await specific_heat_capacity(varobj=varobj), "joule/(kg*K)")

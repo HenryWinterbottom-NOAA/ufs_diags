@@ -90,7 +90,7 @@ async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
 
     # Compute the pressure profile as a function of depth.
     msg = "Computing the sea-water pressure from depth."
-    logger.warn(msg=msg)
+    logger.info(msg=msg)
     presdict = {
         "depth": units.Quantity(varobj.depth.values, "m").magnitude,
         "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,

@@ -85,7 +85,7 @@ async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
 
     # Compute the absolute salinity from the practical salinity.
     msg = "Computing absolute salinity from practical salinity."
-    logger.warn(msg=msg)
+    logger.info(msg=msg)
     asalndict = {
         "lats": units.Quantity(varobj.latitude.values, "degree").magnitude,
         "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,

@@ -65,6 +65,11 @@ from utils.logger_interface import Logger
 
 # ----
 
+# Define all available module properties.
+__all__ = ["Derived"]
+
+# ----
+
 
 class Derived:
     """

@@ -103,7 +103,7 @@ async def specific_heat_capacity(varobj: SimpleNamespace) -> units.Quantity:
 
     # Compute the specific heat capacity of seawater.
     msg = "Computing the specific heat capacity of sea water."
-    logger.warn(msg=msg)
+    logger.info(msg=msg)
     cpdict = {
         "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
         "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
@@ -118,7 +118,7 @@ async def specific_heat_capacity(varobj: SimpleNamespace) -> units.Quantity:
     itemp = units.Quantity(
         await insitu_from_conservative(varobj=varobj), "degC"
     ).magnitude
-    shc = units.Quantity(cp_t_exact(SA=asaln, t=itemp, p=cpobj.pres), "joule/(kg*K)")
+    shc = units.Quantity(cp_t_exact(SA=asaln, t=itemp, p=cpobj.pres), "joule/(kg*degC)")
 
     return shc
 
@@ -146,16 +146,16 @@ async def total_heat_content(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    toch: units.Quantity
+    ohc: units.Quantity
 
         A Python units.Quantity variable containing the total ocean
         heat content; units are ``joule*m^3/kg^2``.
 
     """
 
-    # Compute the total heat content.
-    msg = "Computing the integrated ocean heat content."
-    logger.warn(msg=msg)
+    # Compute the ocean heat content.
+    msg = "Computing the ocean heat content."
+    logger.info(msg=msg)
     ohcdict = {
         "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
         "lons": units.Quantity(varobj.longitude.values, "degree").magnitude,
@@ -181,8 +181,12 @@ async def total_heat_content(varobj: SimpleNamespace) -> units.Quantity:
         ),
         "m^3/kg",
     )
-    shc = units.Quantity(await specific_heat_capacity(varobj=varobj), "joule/(kg*K)")
-    sumitemp = units.Quantity((itemp[-1, ...] - itemp[0, ...]), "K")
-    tohc = svas * shc * sumitemp
+    shc = await specific_heat_capacity(varobj=varobj)    
+    delta_itemp = itemp
+    for idx in range(numpy.shape(delta_itemp)[0] - 1):
+        delta_itemp[idx,...] = (itemp[idx+1,...] - itemp[idx,...])
+    delta_itemp[-1,...] = 0.0
+    delta_itemp = units.Quantity(delta_itemp, "degC")
+    tohc = svas * shc * delta_itemp
 
     return tohc

@@ -145,7 +145,7 @@ async def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
 
     # Compute the insitu-temperature from conservative temperature.
     msg = "Computing insitu-temperature from conservative temperature."
-    logger.status(msg=msg)
+    logger.info(msg=msg)
     itempdict = {
         "ptemp": units.Quantity(varobj.pottemp.values, "degC").magnitude,
         "pres": units.Quantity(varobj.seawater_pressure.values, "dbar").magnitude,

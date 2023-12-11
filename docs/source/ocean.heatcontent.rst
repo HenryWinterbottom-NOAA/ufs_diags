@@ -1,14 +1,14 @@
-Oceanic Temperatures
+Oceanic Heat Content
 ====================
 
-.. currentmodule:: derived.ocean.temperatures
+.. currentmodule:: derived.ocean.heatcontent
 
-.. autofunction:: conservative_from_potential
+.. autofunction:: specific_heat_capacity
 
 The following are the mandatory ``SimpleNamespace`` variables upon
 entry. Note that all unit conversions are handled within the
 respective function(s).
-
+		 
 .. list-table::
    :widths: auto
    :header-rows: 1
@@ -17,22 +17,22 @@ respective function(s).
    * - **Variable**
      - **Description**
    * - ``latitude``
-     - Array of latitude coordinate values.
+     - 2-dimensional array of latitude coordinate values.
    * - ``longitude``
-     - Array of longitude coordinate values.
+     - 2-dimensional array of longitude coordinate values.
    * - ``pottemp``
-     - Profile of potential temperature values.
+     - 3-dimensional array of potential temperature values.
    * - ``seawater_pressure``
-     - Profile of sea-water pressure values.
+     - 3-dimensional array of sea-water pressure values.
    * - ``salinity``
-     - Profile of practical salinity values.
-		  
-.. autofunction:: insitu_from_conservative
+     - 3-dimensional array of practical salinity values.
+
+.. autofunction:: total_heat_content
 
 The following are the mandatory ``SimpleNamespace`` variables upon
 entry. Note that all unit conversions are handled within the
 respective function(s).
-
+		 
 .. list-table::
    :widths: auto
    :header-rows: 1
@@ -41,12 +41,12 @@ respective function(s).
    * - **Variable**
      - **Description**
    * - ``latitude``
-     - Array of latitude coordinate values.
+     - 2-dimensional array of latitude coordinate values.
    * - ``longitude``
-     - Array of longitude coordinate values.
+     - 2-dimensional array of longitude coordinate values.
    * - ``pottemp``
-     - Profile of potential temperature values.
+     - 3-dimensional array of potential temperature values.
    * - ``seawater_pressure``
-     - Profile of sea-water pressure values.
+     - 3-dimensional array of sea-water pressure values.
    * - ``salinity``
-     - Profile of practical salinity values.
+     - 3-dimensional array of practical salinity values.

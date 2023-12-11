@@ -312,7 +312,7 @@ def __reset_nan2zero__(vararr: numpy.array) -> numpy.array:
 # ----
 
 
-def global_divg(varobj: SimpleNamespace) -> numpy.array:
+async def global_divg(varobj: SimpleNamespace) -> numpy.array:
     """
     Description
     -----------
@@ -368,7 +368,7 @@ def global_divg(varobj: SimpleNamespace) -> numpy.array:
 # ----
 
 
-def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.array]:
+async def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.array]:
     """
     Description
     -----------
@@ -432,7 +432,7 @@ def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.array]:
 # ----
 
 
-def global_vort(varobj: SimpleNamespace) -> numpy.array:
+async def global_vort(varobj: SimpleNamespace) -> numpy.array:
     """
     Description
     -----------
@@ -488,7 +488,7 @@ def global_vort(varobj: SimpleNamespace) -> numpy.array:
 # ----
 
 
-def global_wind_part(
+async def global_wind_part(
     varobj: SimpleNamespace,
 ) -> Tuple[
     numpy.array, numpy.array, numpy.array, numpy.array, numpy.array, numpy.array
@@ -582,7 +582,7 @@ def global_wind_part(
 # ----
 
 
-def wndmag(varobj: SimpleNamespace) -> numpy.array:
+async def wndmag(varobj: SimpleNamespace) -> numpy.array:
     """
     Description
     -----------

@@ -53,7 +53,7 @@ In order to install the respective Python packages upon which
 ~~~shell
 user@host:$ cd /path/to/ufs_diags
 user@host:$ /path/to/pip install update
-user@host:$ /path/to/pip install -r /path/to/ufs_diags/requirements.pip
+user@host:$ /path/to/pip install -r /path/to/ufs_diags/requirements.txt
 ~~~
 
 For additional information using `pip` and `requirements.txt` type files, see [here](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
@@ -96,7 +96,7 @@ follow those listed below.
 
 - `feature/user_fork_name`: Additions, enhancements, and/or upgrades for the application(s).
 
-- `fix/user_fork_name`: Bug-type fixes for the application(s) that do not require immediate attention.
+- `bug/user_fork_name`: Bug-type fixes for the application(s) that do not require immediate attention.
 
 - `hotfix/user_fork_name`: Bug-type fixes which require immediate attention to fix issues that compromise the integrity of the respective application(s). 
 

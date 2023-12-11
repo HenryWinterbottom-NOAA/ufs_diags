@@ -46,7 +46,7 @@ History
 
 from types import SimpleNamespace
 
-from diags.units import mks_units
+from units import mks_units
 from gsw import CT_from_pt, SA_from_SP, t_from_CT
 from metpy.units import units
 from tools import parser_interface
@@ -76,7 +76,7 @@ async def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
@@ -84,10 +84,10 @@ async def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity
     Returns
     -------
 
-    ctemp: units.Quantity
+    ctemp: ``units.Quantity``
 
         A Python units.Quantity variable containing the conservative
-        temperature; units ``degC``.
+        temperature; units `degC`.
 
     """
 
@@ -128,7 +128,7 @@ async def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
@@ -136,10 +136,10 @@ async def insitu_from_conservative(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    itemp: units.Quantity
+    itemp: ``units.Quantity``
 
         A Python units.Quantity variable containing the
-        insitu-temperature; units ``degC``.
+        insitu-temperature; units `degC`.
 
     """
 

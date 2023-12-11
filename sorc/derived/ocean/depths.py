@@ -55,11 +55,11 @@ from types import SimpleNamespace
 from typing import List, Tuple, Union
 
 import numpy
-from diags.units import mks_units
 from metpy.units import units
 from scipy.interpolate import interp1d
 from tools import parser_interface
 from tools.parser_interface import handler
+from units import mks_units
 from utils.logger_interface import Logger
 
 # ----
@@ -86,7 +86,7 @@ async def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the absolute salinity will be computed/defined.
@@ -94,10 +94,10 @@ async def depth_from_profile(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    depth: units.Quantity
+    depth: ``units.Quantity``
 
         A Python units.Quantity variable containing a 3-dimensional
-        grid of depth values; units are ``m``.
+        grid of depth values; units are `m`.
 
     """
 
@@ -139,17 +139,17 @@ async def isodepth(
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the absolute salinity will be computed/defined.
 
-    varin: numpy.array
+    varin: ``numpy.array``
 
         A Python numpy.array variable containing the field from which
         to derive the interpolated value.
 
-    isolev: float
+    isolev: ``float``
 
         A Python float value specifying the iso-level for to compute
         the depth.
@@ -157,7 +157,7 @@ async def isodepth(
     Keywords
     --------
 
-    isointrp: Union[None, List], optional
+    isointrp: ``Union[None, List]``, optional
 
         A Python list containing the interpolation function; if
         ``NoneType`` upon entry, the interpolation function will be
@@ -165,12 +165,12 @@ async def isodepth(
         the interpolation function will not be computed and the
         interpolation will be computed using ``isointrp``.
 
-    interp_type: str, optional
+    interp_type: ``str``, optional
 
         A Python string supporting the interpolation type;
         https://tinyurl.com/scipy-interp1d for the supported options.
 
-    fill_value: array-type, optional
+    fill_value: ``array-type``, optional
 
         A Python string or float value specifying how to handle
         numpy.nan and/or missing values; see
@@ -179,7 +179,7 @@ async def isodepth(
     Returns
     -------
 
-    varout: numpy.array
+    varout: ``numpy.array``
 
         A Python numpy.array variable containing the variable
         ``varin`` interpolated to the specified iso-level defined by

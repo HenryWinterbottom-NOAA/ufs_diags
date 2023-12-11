@@ -40,6 +40,7 @@ History
 
 from types import SimpleNamespace
 
+from units import mks_units
 from gsw import SA_from_SP
 from metpy.units import units
 from tools import parser_interface
@@ -56,7 +57,7 @@ logger = Logger(caller_name=__name__)
 
 # ----
 
-
+@mks_units
 async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     """
     Description
@@ -68,7 +69,7 @@ async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
@@ -76,10 +77,10 @@ async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    asaln: units.Quantity
+    asaln: ``units.Quantity``
 
         A Python units.Quantity variable containing the 3-dimensional
-        absolute salinity array; units are ``g/kg``.
+        absolute salinity array; units are `g/kg`.
 
     """
 

@@ -79,7 +79,7 @@ async def pressure_from_thickness(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         isobaric level interface thicknesses and the surface pressure
@@ -88,7 +88,7 @@ async def pressure_from_thickness(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    pres: units.Quantity
+    pres: ``units.Quantity``
 
         A Python units.Quantity variable containing the pressure
         profile; units are Pascals.
@@ -124,7 +124,7 @@ async def pressure_to_sealevel(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         surface pressure, the surface elevation, and the temperature
@@ -133,7 +133,7 @@ async def pressure_to_sealevel(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    pslp: units.Quantity
+    pslp: ``units.Quantity``
 
         A Python units.Quantity variable containing the surface
         pressure reduced to sea-level.

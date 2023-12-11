@@ -67,7 +67,7 @@ async def height_from_pressure(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         pressure levels from which the height profile will be
@@ -76,7 +76,7 @@ async def height_from_pressure(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    height: units.Quantity
+    height: ``units.Quantity``
 
         A Python units.Quantity variable containing the geometric
         height profile.

@@ -1,0 +1,4 @@
+[submodule "dependencies/ufs_pyutils"]
+	path = dependencies/ufs_pyutils
+	url = https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+	branch = develop

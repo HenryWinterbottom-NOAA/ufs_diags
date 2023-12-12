@@ -48,7 +48,7 @@ History
 from types import SimpleNamespace
 
 import numpy
-from diags.grids.haversine import haversine
+from grids.haversine import haversine
 from scipy.interpolate import griddata
 from tools import parser_interface
 
@@ -81,48 +81,48 @@ def ll2ra(
     Parameters
     ----------
 
-    varin: numpy.array
+    varin: ``numpy.array``
 
         A Python numpy.array variable containing the 2-dimensional
         variable defined along the respective Cartesian grid.
 
-    lats: numpy.array
+    lats: ``numpy.array``
 
         A Python numpy.array variable containing the 2-dimensional
         grid of latitude coordinate values; the coordinate values are
         assumed order south to north; units are degrees.
 
-    lons: numpy.array
+    lons: ``numpy.array``
 
         A Python numpy.array variable containing the 2-dimensional
         grid of longitude coordinate values; the coordinate values are
         assumed to be within in the range[-180.0 to 180.0]; units are
         degrees.
 
-    lat_0: float
+    lat_0: ``float``
 
         A Python float value defining the reference latitude
         coordinate value from which the polar grid projection will be
         defined; units are degrees.
 
-    lon_0: float
+    lon_0: ``float``
 
         A Python float value defining the reference longitude
         coordinate value from which the polar grid projection will be
         defined; the coordinate values are assumed to be within in the
         range[-180.0 to 180.0]; units are degrees;
 
-    max_radius: float
+    max_radius: ``float``
 
         A Python float value defining the maximum radial distance for
         which to define the polar grid projection; units are meters.
 
-    drho: float
+    drho: ``float``
 
         A Python float variable defining the radial distance interval
         for the polar projection; units are meters.
 
-    dphi: float
+    dphi: ``float``
 
         A Python float value defining the aximuthal interval for the
         polar projection; units are degrees.
@@ -130,7 +130,7 @@ def ll2ra(
     Returns
     -------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the interpolated
         variable as well as the attributes of the polar projection.

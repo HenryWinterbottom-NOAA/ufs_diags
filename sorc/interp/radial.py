@@ -47,7 +47,7 @@ History
 from types import SimpleNamespace
 
 import numpy
-from diags.exceptions import InterpError
+from exceptions import InterpError
 from scipy.interpolate import griddata
 from utils.logger_interface import Logger
 
@@ -74,7 +74,7 @@ def interp(interp_obj: SimpleNamespace, method: str = "linear") -> numpy.array:
     Parameters
     ----------
 
-    interp_obj: SimpleNamespace
+    interp_obj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the radial
         interpolation attributes.
@@ -82,7 +82,7 @@ def interp(interp_obj: SimpleNamespace, method: str = "linear") -> numpy.array:
     Keywords
     --------
 
-    method: str, optional
+    method: ``str``, optional
 
         A Python string specifying the radial interpolation type; the
         following options are supported.
@@ -97,7 +97,7 @@ def interp(interp_obj: SimpleNamespace, method: str = "linear") -> numpy.array:
     Returns
     -------
 
-    interp_var: numpy.array
+    interp_var: ``numpy.array``
 
         A Python numpy.array variable containing the variable field
         with the data-void region, included in the respective variable

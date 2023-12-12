@@ -36,7 +36,7 @@ sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
 sys.path.insert(0, os.path.abspath("../../sorc/diags"))
 subprocess.run(['git', 'clone', '--recursive', 'https://github.com/HenryWinterbottom-NOAA/ufs_pyutils.git'], check=True, text=True)
-sys.path.insert(0, os.path.join(os.getcwd(), "ufs_pyutils/sorc"))
+sys.path.insert(0, os.path.join(os.getcwd(), "ufs_pyutils"))
 
 # ----
 
@@ -46,7 +46,7 @@ def setup(app):
 
 # ----
 
-project = "UFS Analysis and Forecast Diagnostics API"
+project = "UFS Diagnostics API"
 copyright = "2023 Henry R. Winterbottom"
 author = "2023 Henry R. Winterbottom"
 # release = None
@@ -70,10 +70,10 @@ master_doc = "index"
 
 # API attributes.
 autoapi_dirs = [
-    "../../sorc/diags/derived",
-    "../../sorc/diags/grids",
-    "../../sorc/diags/interp",
-    "../../sorc/diags/transforms",
+    "../../sorc/derived",
+    "../../sorc/grids",
+    "../../sorc/interp",
+    "../../sorc/transforms",
 ]
 autoapi_type = "python"
 autoapi_ignore = []

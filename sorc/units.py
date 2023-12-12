@@ -61,7 +61,7 @@ def mks_units(func: Callable) -> Callable:
     Parameters
     ----------
 
-    func: Callable
+    func: ``Callable``
 
         A Python Callable object containing the function to be
         wrapped.
@@ -69,7 +69,7 @@ def mks_units(func: Callable) -> Callable:
     Returns
     -------
 
-    wrapped_function: Callable
+    wrapped_function: ``Callable``
 
         A Python Callable object containing the wrapped function.
 
@@ -87,12 +87,12 @@ def mks_units(func: Callable) -> Callable:
         Other Parameters
         ----------------
 
-        args: Tuple
+        args: ``Tuple``
 
             A Python tuple containing additional arguments passed to
             the constructor.
 
-        kwargs: Dict
+        kwargs: ``Dict``
 
             A Python dictionary containing additional key and value
             pairs to be passed to the constructor.
@@ -100,7 +100,7 @@ def mks_units(func: Callable) -> Callable:
         Returns
         -------
 
-        varobj: SimpleNamespace # TODO
+        varobj: ``SimpleNamespace`` # TODO
 
             A Python SimpleNamespace object containing the updated
             variable arrays in accordance with the MKS unit

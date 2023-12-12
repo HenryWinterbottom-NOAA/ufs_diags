@@ -77,18 +77,18 @@ def bearing_geoloc(
     Parameters
     ----------
 
-    loc1: Tuple
+    loc1: ``Tuple``
 
         A Python tuple containing the geographical coordinates of
         location 1; format is (lat, lon); units are degrees.
 
-    dist: float
+    dist: ``float``
 
         A Python float value specifying the distance from the
         reference geographical location to the destination location;
         units are meters.
 
-    heading: float
+    heading: ``float``
 
         A Python float value specifying the heading from the reference
         geographical location to the destination location; units are
@@ -97,7 +97,7 @@ def bearing_geoloc(
     Returns
     -------
 
-    loc2: Tuple
+    loc2: ``Tuple``
 
         A Python tuple containing the geographical coordinates of
         destination location; format is (lat, lon); units are degrees.

@@ -57,7 +57,7 @@ from types import SimpleNamespace
 from typing import Callable, Generic, List
 
 from confs.yaml_interface import YAML
-from diags.exceptions import DerivedError
+from exceptions import DerivedError
 from metpy.units import units
 from tools import parser_interface
 from utils.decorator_interface import privatemethod
@@ -107,7 +107,7 @@ class Derived:
         Returns
         -------
 
-        constants_obj: SimpleNamespace
+        constants_obj: ``SimpleNamespace``
 
             A Python SimpleNamespace object containing the specified
             constant values attributes.
@@ -167,12 +167,12 @@ class Derived:
         Parameters
         ----------
 
-        module: str
+        module: ``str``
 
             A Python string specifying the name of the module or
             package from which to collect the respective method.
 
-        method: str
+        method: ``str``
 
             The method or function within the module or package
             (`module`) to be returned.
@@ -180,7 +180,7 @@ class Derived:
         Returns
         -------
 
-        compute_method: Callable
+        compute_method: ``Callable``
 
             A Python function within the specified module.
 
@@ -215,12 +215,12 @@ def check_mandvars(varobj: SimpleNamespace, varlist: List) -> None:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
 
-    varlist: List
+    varlist: ``List``
 
         A Python List containing the mandatory variables for the
         respective diagnostic quantity.

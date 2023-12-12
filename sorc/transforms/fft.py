@@ -43,7 +43,7 @@ History
 # ----
 
 import numpy
-from diags.exceptions import TransformsError
+from exceptions import TransformsError
 from utils.logger_interface import Logger
 
 # ----
@@ -69,7 +69,7 @@ def forward_fft2d(varin: numpy.array) -> numpy.complex:
     Parameters
     ----------
 
-    varin: numpy.array
+    varin: ``numpy.array``
 
         A Python numpy.array variable containing the 2-dimensional
         real-values input array.
@@ -77,7 +77,7 @@ def forward_fft2d(varin: numpy.array) -> numpy.complex:
     Returns
     -------
 
-    varout: numpy.complex
+    varout: ``numpy.complex``
 
         A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the forward FFT.
@@ -123,7 +123,7 @@ def inverse_fft2d(varin: numpy.complex) -> numpy.complex:
     Parameters
     ----------
 
-    varin: numpy.complex
+    varin: ``numpy.complex``
 
         A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the FFT.
@@ -131,7 +131,7 @@ def inverse_fft2d(varin: numpy.complex) -> numpy.complex:
     Returns
     -------
 
-    varout: numpy.complex
+    varout: ``numpy.complex``
 
         A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the inverse FFT.

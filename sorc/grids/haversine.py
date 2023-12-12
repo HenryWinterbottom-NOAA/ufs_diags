@@ -71,12 +71,12 @@ def haversine(loc1: Tuple, loc2: Tuple, radius: float = R_earth.value) -> float:
     Parameters
     ----------
 
-    loc1: Tuple
+    loc1: ``Tuple``
 
         A Python tuple containing the geographical coordinates of
         location 1; format is (lat, lon); units are degrees.
 
-    loc2: Tuple
+    loc2: ``Tuple``
 
         A Python tuple containing the geographical coordinates of
         location 2; format is (lat, lon); units are degrees.
@@ -84,7 +84,7 @@ def haversine(loc1: Tuple, loc2: Tuple, radius: float = R_earth.value) -> float:
     Keywords
     --------
 
-    radius: float, optional
+    radius: ``float``, optional
 
         A Python float value defining the radial distance to be used
         when computing the haversine; units are meters.
@@ -92,7 +92,7 @@ def haversine(loc1: Tuple, loc2: Tuple, radius: float = R_earth.value) -> float:
     Returns
     -------
 
-    hvsine: float
+    hvsine: ``float``
 
         A Python float value containing the great-circle distance
         (e.g., haversine) between the two locations defined upon

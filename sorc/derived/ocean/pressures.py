@@ -43,10 +43,10 @@ History
 
 from types import SimpleNamespace
 
-from diags.units import mks_units
 from gsw import p_from_z
 from metpy.units import units
 from tools import parser_interface
+from units import mks_units
 from utils.logger_interface import Logger
 
 # ----
@@ -73,7 +73,7 @@ async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
@@ -81,7 +81,7 @@ async def seawater_from_depth(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    pres: units.Quantity
+    pres: ``units.Quantity``
 
         A Python units.Quantity variable containing the 3-dimensional
         absolute sea-water pressure array; units are ``dbar``.

@@ -52,15 +52,15 @@ History
 from types import SimpleNamespace
 
 import numpy
-from diags.derived.ocean.salinity import absolute_from_practical
-from diags.derived.ocean.temperatures import (
+from derived.ocean.salinity import absolute_from_practical
+from derived.ocean.temperatures import (
     conservative_from_potential,
     insitu_from_conservative,
 )
-from diags.units import mks_units
 from gsw import cp_t_exact, specvol_anom_standard
 from metpy.units import units
 from tools import parser_interface
+from units import mks_units
 from utils.logger_interface import Logger
 
 # ----
@@ -86,7 +86,7 @@ async def specific_heat_capacity(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
@@ -94,7 +94,7 @@ async def specific_heat_capacity(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    shc: units.Quantity
+    shc: ``units.Quantity``
 
         A Python units.Quantity variable containing the specific heat
         capacity of seawater; units ``joule/kg*K``.
@@ -138,7 +138,7 @@ async def total_heat_content(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing the variables from
         which the diagnostic variables will be computed/defined.
@@ -146,7 +146,7 @@ async def total_heat_content(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    ohc: units.Quantity
+    ohc: ``units.Quantity``
 
         A Python units.Quantity variable containing the total ocean
         heat content; units are ``joule*m^3/kg^2``.
@@ -181,11 +181,11 @@ async def total_heat_content(varobj: SimpleNamespace) -> units.Quantity:
         ),
         "m^3/kg",
     )
-    shc = await specific_heat_capacity(varobj=varobj)    
+    shc = await specific_heat_capacity(varobj=varobj)
     delta_itemp = itemp
     for idx in range(numpy.shape(delta_itemp)[0] - 1):
-        delta_itemp[idx,...] = (itemp[idx+1,...] - itemp[idx,...])
-    delta_itemp[-1,...] = 0.0
+        delta_itemp[idx, ...] = itemp[idx + 1, ...] - itemp[idx, ...]
+    delta_itemp[-1, ...] = 0.0
     delta_itemp = units.Quantity(delta_itemp, "degC")
     tohc = svas * shc * delta_itemp
 

@@ -93,7 +93,7 @@ from typing import Tuple
 
 import numpy
 import spharm
-from diags.exceptions import AtmosDerivedError
+from exceptions import AtmosDerivedError
 from tools import parser_interface
 from utils.logger_interface import Logger
 
@@ -121,7 +121,7 @@ def __cleanup__(xspharm: spharm.Spharmt) -> None:
     Parameters
     ----------
 
-    xspharm: spharm.Spharmt
+    xspharm: ``spharm.Spharmt``
 
         A Python spharm.Spharmt object containing the initialized
         spherical harmonic transform object.
@@ -149,12 +149,12 @@ def __get_lev_uv__(
     Parameters
     ----------
 
-    varobj: object
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         zonal and meridional total wind components.
 
-    lev: int
+    lev: ``int``
 
         A Python integer specifying the vertical level from which to
         collect the zonal and meridional total wind components.
@@ -162,12 +162,12 @@ def __get_lev_uv__(
     Returns
     -------
 
-    xuwnd: numpy.array
+    xuwnd: ``numpy.array``
 
         A Python numpy.array variable containing the zonal wind
         component collected for the specified vertical level.
 
-    xvwnd: numpy.array
+    xvwnd: ``numpy.array``
 
         A Python numpy.array variable containing the meridional wind
         component collected for the specified vertical level.
@@ -209,7 +209,7 @@ def __init_spharm__(array_in: numpy.array) -> spharm.Spharmt:
     Parameters
     ----------
 
-    array_in: numpy.array
+    array_in: ``numpy.array``
 
         A Python numpy.array variable; the shape of the respective
         array will be used to initialize the spherical harmonic
@@ -218,7 +218,7 @@ def __init_spharm__(array_in: numpy.array) -> spharm.Spharmt:
     Returns
     -------
 
-    xspharm: spharm.Spharmt
+    xspharm: ``spharm.Spharmt``
 
         A Python spharm.Spharmt object containing the initialized
         spherical harmonic transform object.
@@ -249,11 +249,11 @@ def __reset_nan__(vararr: numpy.array, ref_vararr: numpy.array) -> numpy.array:
     Parameters
     ----------
 
-    vararr: numpy.array
+    vararr: ``numpy.array``
 
         A Python numpy.array variable.
 
-    ref_vararr: numpy.array
+    ref_vararr: ``numpy.array``
 
         A Python numpy.array variable (possibly) containing
         `numpy.nan` values.
@@ -261,7 +261,7 @@ def __reset_nan__(vararr: numpy.array, ref_vararr: numpy.array) -> numpy.array:
     Returns
     -------
 
-    vararr: numpy.array
+    vararr: ``numpy.array``
 
         A Python numpy.array variable with values replaced with
         `numpy.nan` relative to the reference variable `ref_vararr`.
@@ -288,7 +288,7 @@ def __reset_nan2zero__(vararr: numpy.array) -> numpy.array:
     Parameters
     ----------
 
-    vararr: numpy.array
+    vararr: ``numpy.array``
 
         A Python numpy.array variable (possibly) containing
         `numpy.nan` values.
@@ -296,7 +296,7 @@ def __reset_nan2zero__(vararr: numpy.array) -> numpy.array:
     Returns
     -------
 
-    vararr: numpy.array
+    vararr: ``numpy.array``
 
         A Python numpy.array variable where any `numpy.nan` values
         have been reset to `0.0`.
@@ -323,7 +323,7 @@ async def global_divg(varobj: SimpleNamespace) -> numpy.array:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         zonal and meridional wind components; units are meters per
@@ -332,7 +332,7 @@ async def global_divg(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    divg: numpy.array
+    divg: ``numpy.array``
 
         A Python numpy.array variable containing the global divergence
         values.
@@ -379,7 +379,7 @@ async def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.arr
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         zonal and meridional wind components; units are meters per
@@ -388,12 +388,12 @@ async def global_psichi(varobj: SimpleNamespace) -> Tuple[numpy.array, numpy.arr
     Returns
     -------
 
-    chi: numpy.array
+    chi: ``numpy.array``
 
         A Python numpy.array variable containing the global velocity
         potential values.
 
-    psi: numpy.array
+    psi: ``numpy.array``
 
         A Python numpy.array variable containing the global
         streamfunction values.
@@ -443,7 +443,7 @@ async def global_vort(varobj: SimpleNamespace) -> numpy.array:
     Parameters
     ----------
 
-    varobj: object
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         zonal and meridional wind components; units are meters per
@@ -452,7 +452,7 @@ async def global_vort(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    vort: numpy.array
+    vort: ``numpy.array``
 
         A Python numpy.array variable containing the global vorticity
         values.
@@ -504,7 +504,7 @@ async def global_wind_part(
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         zonal and meridional wind components; units are meters per
@@ -513,18 +513,18 @@ async def global_wind_part(
     Returns
     -------
 
-    (udiv, vdiv): Tuple[numpy.array, numpy.array]
+    (udiv, vdiv): ``Tuple[numpy.array, numpy.array]``
 
         Python numpy.array variables containing the components of the
         divergent component of the global total wind field.
 
-    (uhrm, vhrm): Tuple[numpy.array, numpy.array]
+    (uhrm, vhrm): ``Tuple[numpy.array, numpy.array]``
 
         Python numpy.array variables containing the components of the
         harmonic (i.e., residual) component of the global total wind
         field.
 
-    (uvor, vvort): Tuple[numpy.array, numpy.array]
+    (uvor, vvort): ``Tuple[numpy.array, numpy.array]``
 
         Python numpy.array variables containing the components of the
         rotational component of the global total wind field.
@@ -592,7 +592,7 @@ async def wndmag(varobj: SimpleNamespace) -> numpy.array:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace containing, at minimum, the zonal and
         meridional wind components; units are meters per second.
@@ -600,7 +600,7 @@ async def wndmag(varobj: SimpleNamespace) -> numpy.array:
     Returns
     -------
 
-    magwnd: numpy.array
+    magwnd: ``numpy.array``
 
         A Python numpy.array variable containing the magnitude of the
         total wind field.

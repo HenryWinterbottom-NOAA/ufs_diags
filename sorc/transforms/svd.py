@@ -55,7 +55,7 @@ History
 from typing import Tuple
 
 import numpy
-from diags.exceptions import TransformsError
+from exceptions import TransformsError
 from scipy.linalg import svd
 from utils.logger_interface import Logger
 
@@ -91,7 +91,7 @@ def deconstruct(
     Parameters
     ----------
 
-    varin: numpy.array
+    varin: ``numpy.array``
 
         A Python numpy.array variable containing the input variable
         for the SVD (i.e., `A`).
@@ -99,46 +99,46 @@ def deconstruct(
     Keywords
     --------
 
-    compute_uv: bool, optional
+    compute_uv: ``bool``, optional
 
         A Python boolean valued variable specifying whether to compute
         the unitary matrices `Umat` and `Vmat` in addition to the
         singular value array `Sarr`.
 
-    full_matrices: bool, optional
+    full_matrices: ``bool``, optional
 
         A Python boolean valued variable specifying whether to compute
         the SVD using full (`True`) or reduced dimension (`False`)
         matrices.
 
-    overwrite_a: bool, optional
+    overwrite_a: ``bool``, optional
 
         A Python boolean valued variable specifying whether to
         overwrite the input matrix `A` when computing the SVD.
 
-    check_finite: bool, optional
+    check_finite: ``bool``, optional
 
         A Python boolean valued variable specifying whether to check
         if the input matrix `A` contains only finite values.
 
-    lapack_driver: str, optional
+    lapack_driver: ``str``, optional
 
         A Python string variable specyfing the LAPACK SVD driver.
 
     Returns
     -------
 
-    Umat: numpy.array
+    Umat: ``numpy.array``
 
         A Python numpy.array variable containing the unitary matrix
         `U` computed from the SVD of the input variable `varin`.
 
-    Sarr: numpy.array
+    Sarr: ``numpy.array``
 
         A Python numpy.array variable containing the singular values
         array compute from the SVD of the input variable `varin`.
 
-    Vmat: numpy.array
+    Vmat: ``numpy.array``
 
         A Python numpy.array variable containing the unitary matrix
         `V` computed from the SVD of the input variable `varin`.
@@ -201,12 +201,12 @@ def rebuild(
     Parameters
     ----------
 
-    varin: numpy.array
+    varin: ``numpy.array``
 
         A Python numpy.array variable containing the input variable
         for the SVD (i.e., `A`).
 
-    ncoeffs: int
+    ncoeffs: ``int``
 
         A Python integer specifying the number of singular values,
         relative to 0, to be set to 0.0 prior to rebuilding the
@@ -215,36 +215,36 @@ def rebuild(
     Keywords
     --------
 
-    compute_uv: bool, optional
+    compute_uv: ``bool``, optional
 
         A Python boolean valued variable specifying whether to compute
         the unitary matrices `Umat` and `Vmat` in addition to the
         singular value array `Sarr`.
 
-    full_matrices: bool, optional
+    full_matrices: ``bool``, optional
 
         A Python boolean valued variable specifying whether to compute
         the SVD using full (`True`) or reduced dimension (`False`)
         matrices.
 
-    overwrite_a: bool, optional
+    overwrite_a: ``bool``, optional
 
         A Python boolean valued variable specifying whether to
         overwrite the input matrix `A` when computing the SVD.
 
-    check_finite: bool, optional
+    check_finite: ``bool``, optional
 
         A Python boolean valued variable specifying whether to check
         if the input matrix `A` contains only finite values.
 
-    lapack_driver: str, optional
+    lapack_driver: ``str``, optional
 
         A Python string variable specyfing the LAPACK SVD driver.
 
     Returns
     -------
 
-    varout: numpy.array
+    varout: ``numpy.array``
 
         A Python numpy.array variable containing the output variable
         reconstructed from the input variable array.
@@ -283,17 +283,17 @@ def reconstruct(Umat: numpy.array, Sarr: numpy.array, Vmat: numpy.array) -> nump
     Parameters
     ----------
 
-    Umat: numpy.array
+    Umat: ``numpy.array``
 
         A Python numpy.array variable containing the unitary matrix
         `U` computed from from the SVD.
 
-    Sarr: numpy.array
+    Sarr: ``numpy.array``
 
         A Python numpy.array variable containing the singular values
         array compute from the SVD.
 
-    Vmat: numpy.array
+    Vmat: ``numpy.array``
 
         A Python numpy.array variable containing the unitary matrix
         `V` computed from the SVD.
@@ -301,7 +301,7 @@ def reconstruct(Umat: numpy.array, Sarr: numpy.array, Vmat: numpy.array) -> nump
     Returns
     -------
 
-    varout: numpy.array
+    varout: ``numpy.array``
 
         A Python numpy.array variable containing the reconstructed
         variable field.

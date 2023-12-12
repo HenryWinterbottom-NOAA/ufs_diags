@@ -7,8 +7,6 @@ on:
   release:
     types:
       - published
-  schedule:
-    - cron: 0 0 * * *
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,14 +27,14 @@ jobs:
           path: ufs_diags
       - name: Run pycodestyle application.
         run: >
-          cd $GITHUB_WORKSPACE/ufs_diags/sorc/diags
+          cd "${GITHUB_WORKSPACE}/ufs_diags/sorc"
 
-          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle derived
+          $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" derived
 
-          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle exceptions.py
+          $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" exceptions.py
 
-          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle grids
+          $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" grids
 
-          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle interp
+          $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" interp
 
-          $(command -v pycodestyle) -v --config $GITHUB_WORKSPACE/ufs_diags/.pycodestyle transforms
+          $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" transforms

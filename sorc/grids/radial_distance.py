@@ -46,8 +46,8 @@ from typing import Tuple
 
 import numpy
 from astropy.constants import R_earth
-from diags.exceptions import GridsError
-from diags.grids.haversine import haversine
+from exceptions import GridsError
+from grids.haversine import haversine
 from utils.logger_interface import Logger
 
 # ----
@@ -79,17 +79,17 @@ def radial_distance(
     Parameters
     ----------
 
-    refloc: Tuple
+    refloc: ``Tuple``
 
         A Python tuple containing the geographical coordinates for the
         reference location; format is (lat, lon); units are degrees.
 
-    latgrid: numpy.array
+    latgrid: ``numpy.array``
 
         A Python numpy.array 1-dimensional variable containing the
         latitude coordinate values; units are degrees.
 
-    longrid: numpy.array
+    longrid: ``numpy.array``
 
         A Python numpy.array 1-dimensional variable containing the
         longitude coordinate values; units are degrees.
@@ -97,7 +97,7 @@ def radial_distance(
     Keywords
     --------
 
-    radius: float, optional
+    radius: ``float``, optional
 
         A Python float value defining the radial distance to be used
         when computing the haversine; units are meters.
@@ -105,7 +105,7 @@ def radial_distance(
     Returns
     -------
 
-    raddist: numpy.array
+    raddist: ``numpy.array``
 
         A Python numpy.array 1-dimensional variable containing the
         radial distances relative to the reference geographical
@@ -114,7 +114,7 @@ def radial_distance(
     Raises
     ------
 
-    GeoMetsError:
+    GridsError:
 
         - raised if the either or both the latitude and longitude
           arrays are not 1-dimensional upon entry.

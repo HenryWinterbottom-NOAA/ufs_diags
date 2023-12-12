@@ -48,7 +48,7 @@ History
 from typing import List
 
 import numpy
-from diags.exceptions import InterpError
+from exceptions import InterpError
 from utils.logger_interface import Logger
 from wrf import interplevel
 
@@ -75,17 +75,17 @@ def interp(varin: numpy.array, zarr: numpy.array, levs: List) -> numpy.array:
     Parameters
     ----------
 
-    varin: numpy.array
+    varin: ``numpy.array``
 
         A Python numpy.array 3-dimensional variable to be
         interpolated.
 
-    zarr: numpy.array
+    zarr: ``numpy.array``
 
         A Python numpy.array for the respective vertical level type;
         this array must be of the same dimension as `varin`.
 
-    levs: List
+    levs: ``List``
 
         A Python list of levels to which to interpolate; the units of
         this list must be identical to the units of the `zarr` array.
@@ -93,7 +93,7 @@ def interp(varin: numpy.array, zarr: numpy.array, levs: List) -> numpy.array:
     Returns
     -------
 
-    varout: numpy.array
+    varout: ``numpy.array``
 
         A Python numpy.array variable containing the 3-dimensional
         variable interpolated to the specified vertical levels.

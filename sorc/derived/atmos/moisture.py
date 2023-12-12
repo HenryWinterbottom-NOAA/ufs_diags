@@ -68,7 +68,7 @@ async def spfh_to_mxrt(varobj: SimpleNamespace) -> units.Quantity:
     Parameters
     ----------
 
-    varobj: SimpleNamespace
+    varobj: ``SimpleNamespace``
 
         A Python SimpleNamespace object containing, at minimum, the
         specific humidity profile (`specific_humidity`) from which the
@@ -77,7 +77,7 @@ async def spfh_to_mxrt(varobj: SimpleNamespace) -> units.Quantity:
     Returns
     -------
 
-    mxrt: units.Quantity
+    mxrt: ``units.Quantity``
 
         A Python units.Quantity variable containing the mixing-ratio
         profile.

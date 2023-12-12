@@ -25,3 +25,5 @@ export INSTALL_PATH=${INSTALL_PATH:-"${PWD}"}
 echo "Installing in path ${INSTALL_PATH}"
 $(command -v pip) install --upgrade pip
 $(command -v pip) install -r "${INSTALL_PATH}/dependencies/ufs_pyutils/requirements.txt"
+$(command -v python) ${INSTALL_PATH}/dependencies/ufs_pyutils/setup.py build
+$(command -v python) ${INSTALL_PATH}/dependencies/ufs_pyutils/setup.py install

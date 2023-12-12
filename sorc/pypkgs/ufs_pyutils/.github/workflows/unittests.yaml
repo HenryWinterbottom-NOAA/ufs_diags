@@ -1,0 +1,44 @@
+---
+name: Unit Tests
+on:
+  - push
+  - pull_request
+  - release
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Run the ufs_pyutils unit-tests.
+    steps:
+      - name: Build and install Python dependencies.
+        run: >
+          $(command -v wget) --no-check-certificate
+          https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
+
+          $(command -v sh) Miniconda3-py39_4.10.3-Linux-x86_64.sh -b -p miniconda
+
+          $(command -v python) -m pip install --upgrade pip
+
+          $(command -v python) -m pip install pytest hypothesis codecov
+
+          export PATH="/miniconda/bin:${PATH}"
+
+          export PYTHONPATH="${GITHUB_WORKSPACE}/ufs_pyutils"
+      - name: Checkout ufs_pyutils.
+        uses: actions/checkout@v2
+        with:
+          path: ufs_pyutils
+      - name: Run the unit-tests and collect code coverage statistics.
+        run: >
+          cd "${GITHUB_WORKSPACE}/ufs_pyutils"
+
+          export PYTHONPATH="${GITHUB_WORKSPACE}/ufs_pyutils"
+
+          $(command -v python) -m pip install -r "${GITHUB_WORKSPACE}/ufs_pyutils/requirements.txt"
+
+          $(command -v coverage) run -m pytest
+
+          $(command -v coverage) xml
+      - name: Upload coverage reports to Codecov.
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.UFS_PYUTILS }}

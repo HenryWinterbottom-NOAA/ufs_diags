@@ -46,7 +46,7 @@ def setup(app):
 
 # ----
 
-project = "UFS Analysis and Forecast Diagnostics API"
+project = "UFS Diagnostics API"
 copyright = "2023 Henry R. Winterbottom"
 author = "2023 Henry R. Winterbottom"
 # release = None

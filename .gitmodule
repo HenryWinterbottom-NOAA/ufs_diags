@@ -1,0 +1,4 @@
+[submodule "extpkgs/ufs_pyutils"]
+   path = extpkgs/ufs_pyutils
+   url = https://github.com/HenryWinterbottom-NOAA/ufs_pyutils
+   branch = develop

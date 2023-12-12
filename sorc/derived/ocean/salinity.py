@@ -40,10 +40,10 @@ History
 
 from types import SimpleNamespace
 
-from units import mks_units
 from gsw import SA_from_SP
 from metpy.units import units
 from tools import parser_interface
+from units import mks_units
 from utils.logger_interface import Logger
 
 # ----
@@ -56,6 +56,7 @@ __all__ = ["absolute_from_practical"]
 logger = Logger(caller_name=__name__)
 
 # ----
+
 
 @mks_units
 async def absolute_from_practical(varobj: SimpleNamespace) -> units.Quantity:

@@ -6,5 +6,4 @@ Interpolation
 
    interp.ll2ra
    interp.radial
-   interp.vertical
 

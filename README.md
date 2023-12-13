@@ -70,6 +70,25 @@ user@host:$ /path/to/python setup.py install --user
 
 For additional information and options for building Python packages, see [here](https://docs.python.org/3.5/distutils/setupscript.html).
 
+# Virtual Environment
+
+Virtual environments can be configured as follows:
+
+~~~shell
+user@host:$ cd /path/to/ufs_diags/venv
+user@host:$ ./install.sh
+~~~
+
+The above will configure the virtual environment. To execute
+applications within the virtual environment, do as follows:
+
+~~~shell
+user@host:$ cd /path/to/ufs_diags/venv
+user@host:$ ./setup.sh
+~~~
+
+The above will launch the respective virtual environment.
+
 # Docker Containers
 
 Docker containers containing the `ufs_diags` dependencies can be

@@ -54,6 +54,16 @@ A Fortran compiler is required for the respective Python dependencies. This pack
      - `WRF-ARW diagnostics and interpolation routines <https://github.com/NCAR/wrf-python>`_
      - ``pip install wrf-python==1.3.4.1``
 
+The above packages can be installed as follows:
+
+.. code-block:: bash
+
+   user@host:$ cd /path/to/ufs_diags
+   user@host:$ /path/to/pip install --upgrade pip
+   user@host:$ /path/to/pip install -r requirements.txt
+
+For additional information and options for building Python packages, see `here <https://docs.python.org/3.5/distutils/setupscript.html)>`_.
+
 Virtual Environment
 -------------------
 
@@ -62,14 +72,14 @@ Virtual environments can be configured as follows:
 .. code-block:: bash
 
    user@host:$ cd /path/to/ufs_diags/venv
-   user@host:$ ./install
+   user@host:$ ./install.sh
 
 The above will configure the virtual environment. To execute applications within the virtual environment, do as follows:
 
 .. code-block:: bash
 
    user@host:$ cd /path/to/ufs_diags/venv
-   user@host:$ source bin/activate
+   user@host:$ ./setup.sh
 
 The above will launch the respective virtual environment.
 

@@ -58,7 +58,7 @@ logger = Logger(caller_name=__name__)
 # ----
 
 
-def forward_fft2d(varin: numpy.array) -> numpy.complex:
+def forward_fft2d(varin: numpy.array) -> complex:
     """
     Description
     -----------
@@ -77,7 +77,7 @@ def forward_fft2d(varin: numpy.array) -> numpy.complex:
     Returns
     -------
 
-    varout: ``numpy.complex``
+    varout: ``complex``
 
         A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the forward FFT.
@@ -112,7 +112,7 @@ def forward_fft2d(varin: numpy.array) -> numpy.complex:
 # ----
 
 
-def inverse_fft2d(varin: numpy.complex) -> numpy.complex:
+def inverse_fft2d(varin: complex) -> complex:
     """
     Description
     -----------
@@ -123,7 +123,7 @@ def inverse_fft2d(varin: numpy.complex) -> numpy.complex:
     Parameters
     ----------
 
-    varin: ``numpy.complex``
+    varin: ``complex``
 
         A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the FFT.
@@ -131,7 +131,7 @@ def inverse_fft2d(varin: numpy.complex) -> numpy.complex:
     Returns
     -------
 
-    varout: ``numpy.complex``
+    varout: ``complex``
 
         A Python numpy.complex variable containing the 2-dimensional
         complex-values computed from the inverse FFT.

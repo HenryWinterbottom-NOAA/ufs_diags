@@ -30,3 +30,4 @@ $(command -v pip) install --upgrade pip
 $(command -v git) clone --recursive http://www.github.com/henrywinterbottom-noaa/ufs_pyutils --branch develop "${VENV_PATH}/dependencies/ufs_pyutils"
 $(command -v pip) install -r "${VENV_PATH}/dependencies/ufs_pyutils/requirements.txt"
 $(command -v pip) install -r "${INSTALL_PATH}/requirements.txt"
+echo "export PYTHONPATH=${VENV_PATH}/dependencies/ufs_pyutils:${INSTALL_PATH}/sorc" >> "${VENV_PATH}/bin/activate"

@@ -84,7 +84,7 @@ applications within the virtual environment, do as follows:
 
 ~~~shell
 user@host:$ cd /path/to/ufs_diags/venv
-user@host:$ ./setup.sh
+user@host:$ source bin/activate
 ~~~
 
 The above will launch the respective virtual environment.

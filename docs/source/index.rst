@@ -79,7 +79,7 @@ The above will configure the virtual environment. To execute applications within
 .. code-block:: bash
 
    user@host:$ cd /path/to/ufs_diags/venv
-   user@host:$ ./setup.sh
+   user@host:$ source bin/activate
 
 The above will launch the respective virtual environment.
 

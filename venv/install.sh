@@ -8,12 +8,15 @@
 #   `ufs_diags` package and establishes the run-time environment
 #   configuration.
 
-# Usage: ./install
+# Usage: ./install.sh
 
 # Imported Environment Variables
 
-# INSTALL_PATH: The directory tree path to the `ufs_diags` GitHub
-#   clone; if not specified this defaults to `${PWD}`.
+#   - INSTALL_PATH: The installation path for the `ufs_diags` GitHub
+#       clone; defaults to `${PWD}`.
+
+#   - FC: The FORTRAN compiler to be used for building the dependency
+#       packages; defaults to `gfortran`.
 
 # ----
 
@@ -28,6 +31,7 @@ export FC=${FC:-$(command -v which) gfortan}
 # Install the respective packages.
 echo "Installing in path ${INSTALL_PATH}"
 $(command -v python3) -m venv .
+# shellcheck disable=SC1091
 source "${VENV_PATH}/bin/activate"
 $(command -v pip) install --upgrade pip
 $(command -v mkdir) -p "${VENV_PATH}/dependencies"
@@ -37,7 +41,7 @@ $(command -v pip) install -r "${INSTALL_PATH}/requirements.txt"
 
 # Build the wrapper script for the virtual environment.
 echo "Building script ${VENV_PATH}/setup.sh"
-cat >> ${VENV_PATH}/setup.sh <<EOF
+cat >> "${VENV_PATH}/setup.sh" <<EOF
 #!/usr/bin/env bash
 export PYTHONPATH="${VENV_PATH}/dependencies/ufs_pyutils:${VENV_PATH}/dependencies/ufs_diags"
 EOF

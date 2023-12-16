@@ -33,8 +33,8 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.abspath("."))
-sys.path.insert(0, os.path.join(os.path.abspath("."), "../../sorc"))
-sys.path.insert(0, os.path.abspath("../../sorc"))
+sys.path.insert(0, os.path.join(os.path.abspath("."), "../../diags"))
+sys.path.insert(0, os.path.abspath("../../diags"))
 subprocess.run(
     [
         "git",
@@ -89,10 +89,10 @@ master_doc = "index"
 
 # API attributes.
 autoapi_dirs = [
-    "../../sorc/derived",
-    "../../sorc/grids",
-    "../../sorc/interp",
-    "../../sorc/transforms",
+    "../../diags/derived",
+    "../../diags/grids",
+    "../../diags/interp",
+    "../../diags/transforms",
 ]
 autoapi_type = "python"
 autoapi_ignore = []

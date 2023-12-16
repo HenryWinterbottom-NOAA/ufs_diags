@@ -55,11 +55,11 @@ from types import SimpleNamespace
 from typing import List, Tuple, Union
 
 import numpy
+from diags.units import mks_units
 from metpy.units import units
 from scipy.interpolate import interp1d
 from tools import parser_interface
 from tools.parser_interface import handler
-from units import mks_units
 from utils.logger_interface import Logger
 
 # ----

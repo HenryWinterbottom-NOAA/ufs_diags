@@ -47,7 +47,7 @@ History
 from types import SimpleNamespace
 
 import numpy
-from exceptions import InterpError
+from diags.exceptions import InterpError
 from scipy.interpolate import griddata
 from utils.logger_interface import Logger
 

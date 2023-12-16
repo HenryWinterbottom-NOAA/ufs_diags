@@ -48,7 +48,7 @@ History
 from typing import List
 
 import numpy
-from exceptions import InterpError
+from diags.exceptions import InterpError
 from utils.logger_interface import Logger
 from wrf import interplevel
 

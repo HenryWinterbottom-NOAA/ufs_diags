@@ -27,7 +27,6 @@ RUN $(command -v apt-get) update -y && \
 ENV PATH="/opt/miniconda/bin:${PATH}"
 
 RUN $(command -v git) clone --recursive "${UFS_DIAGS_GIT_URL}" --branch "${UFS_DIAGS_GIT_BRANCH}" "${DIAGS_ROOT}" && \
-    $(command -v pip) install -r "${DIAGS_ROOT}/requirements.txt" && \
-    echo "export DIAGS_ROOT=${DIAGS_ROOT}/sorc" >> /root/.bashrc
+    $(command -v pip) install -r "${DIAGS_ROOT}/requirements.txt" 
 
-ENV PYTHONPATH="${DIAGS_ROOT}/sorc:${PYTHONPATH}"
+ENV PYTHONPATH="${DIAGS_ROOT}:${PYTHONPATH}"

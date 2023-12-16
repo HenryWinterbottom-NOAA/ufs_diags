@@ -46,7 +46,7 @@ History
 
 from types import SimpleNamespace
 
-from units import mks_units
+from diags.units import mks_units
 from gsw import CT_from_pt, SA_from_SP, t_from_CT
 from metpy.units import units
 from tools import parser_interface
@@ -112,6 +112,7 @@ async def conservative_from_potential(varobj: SimpleNamespace) -> units.Quantity
     ctemp = units.Quantity(CT_from_pt(SA=asaln, pt=ctempobj.ptemp), "degC")
 
     return ctemp
+
 
 # ----
 

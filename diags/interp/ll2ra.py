@@ -48,7 +48,7 @@ History
 from types import SimpleNamespace
 
 import numpy
-from grids.haversine import haversine
+from diags.grids.haversine import haversine
 from scipy.interpolate import griddata
 from tools import parser_interface
 

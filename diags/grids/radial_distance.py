@@ -46,8 +46,8 @@ from typing import Tuple
 
 import numpy
 from astropy.constants import R_earth
-from exceptions import GridsError
-from grids.haversine import haversine
+from diags.exceptions import GridsError
+from diags.grids.haversine import haversine
 from utils.logger_interface import Logger
 
 # ----

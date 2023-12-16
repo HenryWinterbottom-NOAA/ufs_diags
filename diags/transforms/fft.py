@@ -43,7 +43,7 @@ History
 # ----
 
 import numpy
-from exceptions import TransformsError
+from diags.exceptions import TransformsError
 from utils.logger_interface import Logger
 
 # ----

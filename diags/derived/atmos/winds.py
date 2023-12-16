@@ -93,7 +93,7 @@ from typing import Tuple
 
 import numpy
 import spharm
-from exceptions import AtmosDerivedError
+from diags.exceptions import AtmosDerivedError
 from tools import parser_interface
 from utils.logger_interface import Logger
 

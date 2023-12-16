@@ -27,7 +27,7 @@ jobs:
           path: ufs_diags
       - name: Run pycodestyle application.
         run: >
-          cd "${GITHUB_WORKSPACE}/ufs_diags/sorc"
+          cd "${GITHUB_WORKSPACE}/ufs_diags/diags"
 
           $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" derived
 
@@ -38,3 +38,5 @@ jobs:
           $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" interp
 
           $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" transforms
+
+          $(command -v pycodestyle) -v --config "${GITHUB_WORKSPACE}/ufs_diags/.pycodestyle" units.py

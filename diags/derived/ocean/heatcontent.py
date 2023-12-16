@@ -52,15 +52,15 @@ History
 from types import SimpleNamespace
 
 import numpy
-from derived.ocean.salinity import absolute_from_practical
-from derived.ocean.temperatures import (
+from diags.derived.ocean.salinity import absolute_from_practical
+from diags.derived.ocean.temperatures import (
     conservative_from_potential,
     insitu_from_conservative,
 )
+from diags.units import mks_units
 from gsw import cp_t_exact, specvol_anom_standard
 from metpy.units import units
 from tools import parser_interface
-from units import mks_units
 from utils.logger_interface import Logger
 
 # ----

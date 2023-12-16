@@ -57,7 +57,7 @@ from types import SimpleNamespace
 from typing import Callable, Generic, List
 
 from confs.yaml_interface import YAML
-from exceptions import DerivedError
+from diags.exceptions import DerivedError
 from metpy.units import units
 from tools import parser_interface
 from utils.decorator_interface import privatemethod
